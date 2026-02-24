@@ -196,3 +196,82 @@ body.dark-mode .input-group textarea {
     .neo-form { padding: 30px; }
 }
 
+/* --- 6. ADVANCED RESPONSIVE DESIGN --- */
+
+/* Tablet & Smaller Desktops (Under 1024px) */
+@media (max-width: 1024px) {
+    .neo-contact-wrapper {
+        padding: 120px 5% 60px; /* Reduced top padding */
+    }
+    
+    .contact-grid {
+        gap: 40px;
+    }
+
+    .neo-title {
+        font-size: 3.5rem;
+    }
+}
+
+/* Mobile & Small Tablets (Under 768px) */
+@media (max-width: 768px) {
+    .neo-contact-wrapper {
+        padding: 100px 20px 40px; /* Tighten margins for small screens */
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack columns vertically */
+        gap: 40px;
+    }
+
+    .neo-title {
+        font-size: 2.8rem; /* Smaller, readable title */
+        text-align: center;
+    }
+
+    .intro-text {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .info-box {
+        padding: 15px;
+        box-shadow: 4px 4px 0px var(--black); /* Slightly smaller shadow for mobile */
+    }
+
+    .social-container {
+        display: flex;
+        justify-content: center; /* Center social buttons on mobile */
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .neo-form {
+        padding: 25px 20px;
+        box-shadow: 8px 8px 0px var(--black); /* Prevent form from shifting off-screen */
+    }
+
+    body.dark-mode .neo-form {
+        box-shadow: 8px 8px 0px var(--neo-pink);
+    }
+}
+
+/* Very Small Devices (Phones under 480px) */
+@media (max-width: 480px) {
+    .neo-title {
+        font-size: 2.2rem;
+    }
+
+    .neo-submit-btn {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    /* Prevent text overflow in info boxes */
+    .info-box {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+}
+
