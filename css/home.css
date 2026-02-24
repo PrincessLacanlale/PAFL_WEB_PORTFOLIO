@@ -1,4 +1,4 @@
-/* --- Root Variables for Easy Theme Tweaks --- */
+/* --- 1. VARIABLES & THEMES --- */
 :root {
     --bg-color: #fcecbe;
     --text-color: #000000;
@@ -7,6 +7,7 @@
     --white: #ffffff;
     --border-thickness: 3px;
     --neo-shadow: 8px 8px 0px #000;
+    --current-hero-bg: linear-gradient(180deg, #ff99ab 0%, #fcecbe 100%);
 }
 
 /* Dark Mode Overrides */
@@ -15,9 +16,10 @@ body.dark-mode {
     --text-color: #ffffff;
     --white: #262626;
     --neo-shadow: 8px 8px 0px #ff85a2;
+    --current-hero-bg: linear-gradient(180deg, #000000 50%, #eb86a7 100%);
 }
 
-/* --- General Reset --- */
+/* --- 2. GENERAL RESET --- */
 * {
     margin: 0;
     padding: 0;
@@ -25,14 +27,14 @@ body.dark-mode {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     overflow-x: hidden;
     transition: background-color 0.3s ease;
 }
 
-/* --- Navigation --- */
+/* --- 3. NAVIGATION --- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -83,14 +85,16 @@ nav {
     gap: 20px;
 }
 
-/* --- Hero Section --- */
+/* --- 4. HERO SECTION --- */
 .hero {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 120px 8% 80px;
+    padding: 140px 8% 80px;
     min-height: 100vh;
-    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    background: var(--current-hero-bg);
+    background-image: var(--current-hero-bg), url('https://www.transparenttextures.com/patterns/stardust.png');
+    border-bottom: 5px solid #000;
 }
 
 .hero-container {
@@ -107,7 +111,7 @@ nav {
     max-width: 550px;
 }
 
-/* --- Typography --- */
+/* --- 5. TYPOGRAPHY --- */
 .subtitle {
     display: inline-block;
     background: var(--accent-yellow);
@@ -123,7 +127,7 @@ nav {
 
 h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 4.5rem;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 900;
     line-height: 0.95;
     margin-bottom: 30px;
@@ -132,7 +136,7 @@ h1 {
 
 h1 span {
     color: var(--primary-pink);
-    -webkit-text-stroke: 2px #000;
+    -webkit-text-stroke: 1.5px #000;
     text-shadow: 4px 4px 0px #000;
 }
 
@@ -145,17 +149,13 @@ h1 span {
     transition: 0.3s ease;
 }
 
-.description-box:hover {
-    transform: translate(-5px, -5px);
-}
-
 .description {
     line-height: 1.6;
     font-size: 1.1rem;
     font-weight: 600;
 }
 
-/* --- Buttons --- */
+/* --- 6. BUTTONS --- */
 .hero-btns {
     display: flex;
     gap: 20px;
@@ -188,13 +188,11 @@ h1 span {
     box-shadow: 12px 12px 0px #000;
 }
 
-/* --- Image & Blob --- */
-.hero-img {
-    width: 70%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: auto;
+/* --- 7. IMAGE & BLOB (THE FIX) --- */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .blob-wrapper {
@@ -202,9 +200,9 @@ h1 span {
 }
 
 .blob-shape {
-    width: 450px;
-    height: 480px;
-    background: var(--primary-pink);
+    width: clamp(300px, 35vw, 450px);
+    height: clamp(350px, 40vw, 500px);
+    background: var(--accent-yellow); 
     border: 5px solid #000;
     box-shadow: 20px 20px 0px #000;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
@@ -212,22 +210,23 @@ h1 span {
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; /* FIX: Anchors you to the bottom edge */
     overflow: hidden;
 }
 
 .hero-img {
-    width: 95%;
-    height: 95%;
-    object-fit: contain; /* SHOWS FULL IMAGE */
+    width: 100%;
+    height: 92%; /* Leave tiny room at top so you don't look cramped */
+    object-fit: contain; 
+    object-position: bottom; /* FIX: Prevents cropping of the bottom of the image */
     transition: 0.4s ease;
 }
 
 .blob-wrapper:hover .hero-img {
-    transform: scale(1.05) rotate(-2deg);
+    transform: scale(1.05);
 }
 
-/* --- Floating Decorations --- */
+/* --- 8. FLOATING DECORATIONS --- */
 .sparkle {
     position: absolute;
     background: var(--accent-yellow);
@@ -235,13 +234,55 @@ h1 span {
     border-radius: 50%;
     animation: float 4s ease-in-out infinite;
     box-shadow: 3px 3px 0px #000;
+    z-index: 5;
 }
 
 .s1 { width: 30px; height: 30px; top: 5%; left: -5%; }
 .s2 { width: 20px; height: 20px; bottom: 15%; right: -5%; animation-delay: 1s; }
 .s3 { width: 40px; height: 40px; top: 40%; right: -12%; animation-delay: 2s; background: var(--primary-pink); }
 
-/* --- Animations --- */
+/* --- 9. FOOTER --- */
+.main-footer {
+    padding: 60px 8% 30px;
+    background: var(--bg-color);
+    border-top: 5px solid #000;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-col h4 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-icons a {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+.footer-icons a:hover { color: var(--primary-pink); }
+
+.quick-links ul { list-style: none; }
+.quick-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    line-height: 2;
+    font-weight: 600;
+}
+
+/* --- 10. ANIMATIONS & REVEAL --- */
 @keyframes morphing {
     0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
     25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
@@ -254,30 +295,42 @@ h1 span {
     50% { transform: translateY(-20px); }
 }
 
-/* --- Responsive --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* --- 11. RESPONSIVE --- */
 @media (max-width: 992px) {
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 40px;
+        padding-top: 50px;
     }
 
     .blob-shape {
-        width: 300px;
-        height: 350px;
-    }
-
-    .hero-img {
-        width: 75%;
-        height: 100%;
+        width: 280px;
+        height: 320px;
     }
 
     h1 { font-size: 3rem; }
 
     .hero-btns {
-        justify-content: center;
         flex-direction: column;
+        align-items: center;
     }
 
-    .nav-menu { display: none; }
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
 }
