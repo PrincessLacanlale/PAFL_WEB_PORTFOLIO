@@ -1,33 +1,46 @@
-/* --- 1. CONTACT PAGE BASE --- */
+/* --- 1. THEME VARIABLES (Keep these for the Form) --- */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --neo-pink: #f78da7;
+    --neo-yellow: #fdd835;
+    --form-bg: #f8f8f8;
+    --text-color: #000000;
+    --bg-gradient: linear-gradient(180deg, #ff9eb5 0%, #fffbd4 100%);
+}
+
+body.dark-mode {
+    --text-color: #ffffff;
+    --bg-gradient: linear-gradient(180deg, #000000 40%, #f78da7 100%);
+    --white: #1a1a1a; 
+    --form-bg: #2d2d2d;
+}
+
+/* --- 2. CONTACT PAGE BASE --- */
 body {
     background: var(--bg-gradient);
     background-attachment: fixed;
     color: var(--text-color);
-    overflow-x: hidden;
 }
 
 .neo-contact-wrapper {
-    padding: clamp(100px, 15vh, 160px) 5% 80px;
+    padding: 160px 8% 100px;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* --- 2. THE GRID --- */
+/* --- 3. THE GRID --- */
 .contact-grid {
     max-width: 1200px;
-    width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: clamp(30px, 5vw, 80px);
+    gap: 80px;
     align-items: start;
 }
 
-/* --- 3. LEFT SIDE: INFO & SOCIALS --- */
+/* --- 4. LEFT SIDE: INFO & SOCIALS --- */
 .neo-title {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: 4.5rem;
     font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -40,7 +53,7 @@ body {
 }
 
 body.dark-mode .neo-title span {
-    -webkit-text-stroke: 1.5px var(--white);
+    -webkit-text-stroke: 1.5px #ffffff;
 }
 
 .intro-text {
@@ -60,12 +73,10 @@ body.dark-mode .neo-title span {
     margin-bottom: 20px;
     font-weight: 700;
     box-shadow: 6px 6px 0px var(--black);
-    transition: 0.2s;
-    word-break: break-word;
 }
 
 body.dark-mode .info-box {
-    border-color: var(--white);
+    border-color: #ffffff;
     box-shadow: 6px 6px 0px var(--neo-pink);
 }
 
@@ -79,25 +90,6 @@ body.dark-mode .info-box {
     justify-content: center;
     border: 2px solid var(--black);
     color: #000;
-    flex-shrink: 0;
-}
-
-.info-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-.social-label {
-    margin-top: 30px;
-    text-transform: uppercase;
-    font-weight: 900;
-}
-
-.social-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 15px;
 }
 
 .neo-social-btn {
@@ -112,24 +104,24 @@ body.dark-mode .info-box {
     color: var(--black);
     font-size: 1.4rem;
     box-shadow: 4px 4px 0px var(--black);
-    transition: 0.2s;
+    margin-right: 12px;
 }
 
 body.dark-mode .neo-social-btn {
-    border-color: var(--white);
-    color: var(--white);
+    border-color: #ffffff;
+    color: #ffffff;
 }
 
-/* --- 4. RIGHT SIDE: THE FORM --- */
+/* --- 5. RIGHT SIDE: THE FORM --- */
 .neo-form {
     background: var(--white);
     border: 4px solid var(--black);
-    padding: clamp(20px, 5vw, 45px);
+    padding: 45px;
     box-shadow: 15px 15px 0px var(--black);
 }
 
 body.dark-mode .neo-form {
-    border-color: var(--white);
+    border-color: #ffffff;
     box-shadow: 15px 15px 0px var(--neo-pink);
 }
 
@@ -144,6 +136,18 @@ body.dark-mode .neo-form {
     margin-bottom: 8px;
 }
 
+.neo-social-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--neo-pink);
+    background: var(--neo-yellow);
+    color: var(--black);
+}
+
+.info-box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--neo-pink);
+}
+
 .input-group input, 
 .input-group select, 
 .input-group textarea {
@@ -155,13 +159,11 @@ body.dark-mode .neo-form {
     font-family: inherit;
     box-shadow: 4px 4px 0px var(--black);
     outline: none;
-    box-sizing: border-box;
 }
 
 body.dark-mode .input-group input, 
-body.dark-mode .input-group textarea,
-body.dark-mode .input-group select {
-    border-color: var(--white);
+body.dark-mode .input-group textarea {
+    border-color: #ffffff;
 }
 
 .neo-submit-btn {
@@ -176,30 +178,21 @@ body.dark-mode .input-group select {
     transition: 0.2s;
 }
 
-/* --- 5. HOVERS & ANIMATIONS --- */
-.neo-social-btn:hover, .neo-submit-btn:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 7px 7px 0px var(--neo-pink);
-    background: var(--neo-yellow);
-    color: var(--black);
-}
-
-.info-box:hover {
+.neo-submit-btn:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0px var(--neo-pink);
+    box-shadow: 8px 8px 0px var(--black);
 }
 
+/* --- 6. ANIMATIONS & RESPONSIVE --- */
 .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
-.delay-1 { transition-delay: 0.2s; }
 
-/* --- 6. MOBILE BREAKPOINT --- */
 @media (max-width: 950px) {
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 50px;
     }
-    .neo-contact-wrapper {
-        padding-top: 100px;
-    }
+    .neo-title { font-size: 3rem; }
+    .neo-form { padding: 30px; }
 }
+
