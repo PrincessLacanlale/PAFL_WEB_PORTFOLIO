@@ -1,15 +1,12 @@
+/* --- 1. VARIABLES & THEMES --- */
 :root {
     --pink: #ff85a2;      
     --yellow: #fdd835;
     --black: #000000;
     --white: #ffffff;
     
-    /* Gradients and Textures */
-    --light-gradient: linear-gradient(180deg, #ff99ab 0%, #fcecbe 100%);
-    --texture-url: url('https://www.transparenttextures.com/patterns/stardust.png');
-
-    /* Theme Mapping */
-    --current-hero-bg: var(--light-gradient);
+    /* Light Theme */
+    --current-hero-bg: linear-gradient(180deg, #ff99ab 0%, #fcecbe 100%);
     --current-bg: #fcecbe;
     --current-card: #ffffff;
     --current-text: #000000;
@@ -24,22 +21,27 @@ body.dark-mode {
     --current-border: #ffffff;
 }
 
-/* --- Hero Section --- */
+/* --- 2. HERO SECTION --- */
 .about-hero {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 140px 10% 80px;
     background: var(--current-hero-bg);
-    min-height: 90vh;
+    min-height: 100vh;
     border-bottom: 5px solid var(--current-border);
     transition: all 0.4s ease;
+    box-sizing: border-box;
 }
 
-.about-text { flex: 1; padding-right: 60px; }
+.about-text { 
+    flex: 1; 
+    padding-right: 60px; 
+}
 
 .about-text h1 { 
     font-family: 'Montserrat', sans-serif; 
-    font-size: 4.5rem; 
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
     font-weight: 900;
     color: var(--current-text); 
     text-transform: uppercase;
@@ -60,12 +62,19 @@ body.dark-mode {
     padding: 25px;
     box-shadow: 8px 8px 0px var(--current-border);
     margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* --- Profile Image (The Blob Fix) --- */
+/* --- 3. PROFILE IMAGE (THE BLOB) --- */
+.about-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .blob-shape {
-    width: 400px; 
-    height: 430px;
+    width: clamp(280px, 35vw, 400px); 
+    height: clamp(300px, 40vw, 430px);
     background: var(--yellow); 
     border: 5px solid var(--current-border);
     box-shadow: 15px 15px 0px var(--current-border);
@@ -73,7 +82,7 @@ body.dark-mode {
     animation: morphing 8s ease-in-out infinite;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Anchors person to the bottom */
+    align-items: flex-end;
     overflow: hidden;
     position: relative;
 }
@@ -85,11 +94,7 @@ body.dark-mode {
     transition: transform 0.3s ease;
 }
 
-.blob-wrapper:hover img {
-    transform: scale(1.1) rotate(-2deg);
-}
-
-/* --- Skills Section --- */
+/* --- 4. SKILLS SECTION --- */
 .what-i-do { 
     padding: 100px 10%; 
     background-color: var(--current-bg);
@@ -102,7 +107,7 @@ body.dark-mode {
     color: var(--current-text);
     border: 4px solid var(--current-border);
     padding: 15px 50px;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     margin-bottom: 40px;
     box-shadow: 6px 6px 0px var(--current-border);
     text-transform: uppercase;
@@ -115,6 +120,8 @@ body.dark-mode {
     margin: 80px auto;
     gap: 40px;
 }
+
+.column { flex: 1; }
 
 .tech-grid { 
     display: grid; 
@@ -140,7 +147,29 @@ body.dark-mode {
 
 .skill-item img { width: 40px; height: 40px; margin-bottom: 8px; }
 
-/* --- Certifications --- */
+.vertical-divider {
+    width: 4px;
+    background: var(--current-border);
+    border-radius: 10px;
+}
+
+/* --- 5. SOFT SKILLS --- */
+.soft-list { list-style: none; text-align: left; padding: 0; }
+.soft-list li { 
+    margin-bottom: 12px; 
+    background: var(--current-card);
+    color: var(--current-text);
+    border: 2px solid var(--current-border);
+    padding: 10px 15px;
+    box-shadow: 4px 4px 0px var(--current-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.soft-list li::before { content: "✦"; color: var(--pink); font-weight: bold; }
+
+/* --- 6. CERTIFICATIONS --- */
+.certifications { margin-top: 100px; }
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -167,126 +196,37 @@ body.dark-mode {
 
 .cert-icon { font-size: 2rem; color: var(--pink); }
 
-.cert-link {
-    text-decoration: none;
-    font-weight: 700;
-    color: var(--pink);
-    font-size: 0.85rem;
-}
-
-/* --- Soft Skills List --- */
-.soft-list { list-style: none; text-align: left; }
-.soft-list li { 
-    margin-bottom: 12px; 
-    background: var(--current-card);
-    color: var(--current-text);
-    border: 2px solid var(--current-border);
-    padding: 10px 15px;
-    box-shadow: 4px 4px 0px var(--current-border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.soft-list li::before { content: "✦"; color: var(--pink); font-weight: bold; }
-/* --- Interest Section Base (Desktop First) --- */
-.interests-footer { 
-    margin-top: 80px; 
-    text-align: center;
-    padding: 0 5%;
-}
-
-.interests-footer h3 {
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--current-text);
-    margin-bottom: 40px;
-    letter-spacing: 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Desktop/Laptop Layout: Horizontal Row */
-.interest-tags { 
-    display: flex; 
-    flex-direction: row; /* Horizontal for PC */
-    flex-wrap: wrap;    /* Allows wrapping if screen is small */
-    justify-content: center; 
-    gap: 25px; 
-}
-
-.interest-tags span { 
-    background: #000000; /* Black background like image ab0d5e */
-    color: #ffffff;      /* White text */
-    border: 2px solid #ffffff; /* White border */
-    padding: 12px 25px;
-    font-weight: 900;
-    font-size: 1rem;
-    text-transform: uppercase;
-    
-    /* Sticker Shadow Effect from your image */
-    box-shadow: 5px 5px 0px #ffffff; 
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.2s ease;
-}
-
-/* --- Interest Section: Compact One-Line Desktop Version --- */
+/* --- 7. INTERESTS (STICKER TAGS) --- */
 .interests-footer { 
     margin-top: 60px; 
     text-align: center;
     padding: 0 2%;
 }
 
-.interests-footer h3 {
-    font-size: 1.5rem; /* Made slightly smaller */
-    font-weight: 900;
-    color: var(--current-text);
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
-
 .interest-tags { 
     display: flex; 
     flex-direction: row; 
-    flex-wrap: nowrap;    /* Forces everything into 1 line on PC */
+    flex-wrap: wrap; 
     justify-content: center; 
     align-items: center;
-    gap: 15px;            /* Reduced gap to fit better */
-    overflow-x: hidden;   /* Prevents accidental scrolling on desktop */
+    gap: 15px; 
 }
 
 .interest-tags span { 
-    background: #000000;  /* Black background from image ab0d5e */
-    color: #ffffff;       /* White text */
+    background: #000000; 
+    color: #ffffff; 
     border: 2px solid #ffffff; 
-    padding: 8px 15px;    /* Smaller padding for a more compact look */
+    padding: 8px 15px; 
     font-weight: 800;
-    font-size: 0.85rem;   /* Smaller font size for desktop fit */
+    font-size: 0.85rem; 
     text-transform: uppercase;
-    white-space: nowrap;  /* Prevents text inside from breaking into 2 lines */
-    
-    /* Sticker Shadow Effect */
     box-shadow: 4px 4px 0px #ffffff;
-    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.interest-tags span i {
-    font-size: 0.75rem;   /* Smaller star icon */
-}
-
-/* Hover effect */
 .interest-tags span:hover {
     transform: translateY(-2px);
     box-shadow: 6px 6px 0px var(--pink);
@@ -295,39 +235,66 @@ body.dark-mode {
     border-color: #000000;
 }
 
-/* --- Mobile Responsibility --- */
+/* --- 8. RESPONSIVE MEDIA QUERIES --- */
+
+/* Laptops/Tablets (Landscape) */
 @media (max-width: 1024px) {
-    .interest-tags { 
-        flex-wrap: wrap;   /* Allows wrapping on smaller tablets/laptops */
-        gap: 12px;
-    }
+    .about-hero { padding: 120px 5% 60px; }
+    .about-text { padding-right: 30px; }
+    .tech-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* Tablets (Portrait) */
 @media (max-width: 768px) {
-    .interest-tags { 
-        flex-direction: column; /* Vertical stack for mobile as requested earlier */
+    .about-hero {
+        flex-direction: column-reverse; /* Picture on top of text */
+        text-align: center;
+        padding-top: 100px;
+    }
+    .about-text { padding-right: 0; margin-top: 40px; }
+    
+    .skills-flex {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .vertical-divider { display: none; }
+    
+    .tech-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .interest-tags {
+        flex-direction: column;
         width: 100%;
     }
     
     .interest-tags span {
-        width: 85%;
+        width: 80%;
         justify-content: center;
-        font-size: 0.9rem;
     }
 }
 
-/* --- Animations --- */
+/* Small Phones */
+@media (max-width: 480px) {
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    .about-text h1 { font-size: 2.2rem; }
+    
+    .cert-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .blob-shape {
+        width: 250px;
+        height: 280px;
+    }
+}
+
+/* --- 9. ANIMATIONS --- */
 @keyframes morphing {
-    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    0%, 100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%; }
     50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
 }
 
 .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
-
-/* --- Responsive --- */
-@media (max-width: 992px) {
-    .about-hero, .skills-flex { flex-direction: column; text-align: center; }
-    .about-text { padding-right: 0; }
-    .tech-grid { grid-template-columns: repeat(3, 1fr); }
-}
