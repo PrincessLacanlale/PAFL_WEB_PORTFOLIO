@@ -1,0 +1,393 @@
+/* ==========================================================================
+   1. ROOT VARIABLES & THEMES (Synced with Contact/Resume)
+   ========================================================================== */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --pink: #f78da7;      /* Matched to contact.css */
+    --neo-yellow: #fdd835;
+    
+    --texture-url: url('https://www.transparenttextures.com/patterns/stardust.png');
+    
+    /* Light Mode: Pink to Soft Yellow */
+    --light-gradient: linear-gradient(180deg, #ff9eb5 0%, #fffbd4 100%);
+    
+    --current-text: #000000;
+    --current-border: #000000;
+    --current-body-bg: #ffffff; 
+    --current-card: #ffffff;
+    --current-hero-bg: var(--light-gradient);
+}
+
+body.dark-mode {
+    --current-text: #ffffff;
+    --current-border: #ffffff;
+    --current-body-bg: #1a1a1a; 
+    --current-card: #2a2a2a;
+    /* Dark Mode: Black to Pink */
+    --current-hero-bg: linear-gradient(180deg, #000000 40%, #f78da7 100%);
+}
+
+/* ==========================================================================
+   2. GLOBAL STYLES
+   ========================================================================== */
+body {
+    background: var(--texture-url), var(--current-body-bg);
+    background-attachment: fixed;
+    color: var(--current-text);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.projects-hero {
+    background: var(--texture-url), var(--current-hero-bg); 
+    padding: 160px 10% 100px;
+    text-align: center;
+    border-bottom: 6px solid var(--current-border);
+}
+
+.projects-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.projects-hero h1 span {
+    color: var(--pink); 
+    -webkit-text-stroke: 1.5px var(--current-border);
+}
+
+body.dark-mode .projects-hero h1 span {
+    -webkit-text-stroke: 1.5px #ffffff;
+}
+
+.hero-description-box {
+    background: var(--current-card);
+    border: 4px solid var(--current-border);
+    padding: 25px;
+    max-width: 600px;
+    margin: 40px auto 0;
+    box-shadow: 12px 12px 0px var(--current-border);
+}
+
+body.dark-mode .hero-description-box {
+    box-shadow: 12px 12px 0px var(--pink);
+}
+
+/* ==========================================================================
+   4. PROJECTS GRID & CARDS
+   ========================================================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    padding: 80px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: var(--current-card);
+    border: 4px solid var(--current-border);
+    box-shadow: 12px 12px 0px var(--current-border);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+body.dark-mode .project-card {
+    border-color: #ffffff;
+    box-shadow: 12px 12px 0px var(--pink);
+}
+
+.project-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card.featured {
+    grid-column: span 2;
+    flex-direction: row;
+}
+
+.project-card:hover {
+    transform: translate(-10px, -10px);
+    box-shadow: 20px 20px 0px var(--neo-yellow) !important;
+}
+
+/* ==========================================================================
+   5. IMAGE GALLERY
+   ========================================================================== */
+.project-img-wrapper {
+    position: relative;
+    background: var(--black);
+    border-bottom: 4px solid var(--current-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card.featured .project-img-wrapper {
+    flex: 1.2;
+    border-bottom: none;
+    border-right: 4px solid var(--current-border);
+}
+
+.main-display {
+    height: 350px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.main-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-strip {
+    display: flex;
+    background: var(--current-border);
+    gap: 2px;
+    border-top: 4px solid var(--current-border);
+}
+
+.thumb {
+    width: 70px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.thumb.active { opacity: 1; }
+
+/* ==========================================================================
+   6. TECH TAGS & INFO
+   ========================================================================== */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.tech-tags span {
+    background: var(--neo-yellow);
+    color: var(--black);
+    border: 2px solid var(--black);
+    padding: 6px 15px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0px var(--black);
+}
+
+.status-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--pink);
+    color: #fff;
+    padding: 8px 15px;
+    font-weight: 900;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0px var(--black);
+    z-index: 10;
+}
+
+.project-info {
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.project-info p strong {
+    color: var(--pink);
+}
+
+/* ==========================================================================
+   7. BUTTONS
+   ========================================================================== */
+.btn-neo {
+    background: var(--neo-yellow);
+    color: var(--black);
+    padding: 12px 25px;
+    border: 3px solid var(--black);
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0px var(--black);
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.btn-neo:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px var(--black);
+}
+
+.github-link {
+    color: var(--current-text);
+    text-decoration: none;
+    font-weight: 900;
+    border-bottom: 4px solid var(--pink);
+    margin-top: 15px;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE
+   ========================================================================== */
+/* ==========================================================
+   MOBILE RESPONSIVE IMPROVEMENTS
+   ========================================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .projects-hero {
+        padding: 120px 6% 80px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 6%;
+    }
+
+    .project-card.featured {
+        flex-direction: column;
+        grid-column: span 1;
+    }
+
+    .project-card.featured .project-img-wrapper {
+        border-right: none;
+        border-bottom: 4px solid var(--current-border);
+    }
+
+    .main-display {
+        height: 280px;
+    }
+}
+
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+
+    /* HERO */
+    .projects-hero {
+        padding: 110px 5% 60px;
+    }
+
+    .projects-hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero-description-box {
+        padding: 18px;
+        box-shadow: 8px 8px 0px var(--current-border);
+    }
+
+    /* GRID */
+    .projects-grid {
+        padding: 50px 5%;
+        gap: 30px;
+    }
+
+    .project-card {
+        box-shadow: 8px 8px 0px var(--current-border);
+    }
+
+    .project-card:hover {
+        transform: none; /* Prevent overflow jump on mobile */
+        box-shadow: 8px 8px 0px var(--neo-yellow);
+    }
+
+    /* IMAGES */
+    .main-display {
+        height: 220px;
+    }
+
+    .thumbnail-strip {
+        overflow-x: auto;
+        padding: 4px;
+    }
+
+    .thumb {
+        width: 60px;
+        height: 45px;
+        flex-shrink: 0;
+    }
+
+    /* PROJECT INFO */
+    .project-info {
+        padding: 25px;
+    }
+
+    .project-info h3 {
+        font-size: 1.4rem;
+    }
+
+    .tech-tags span {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+
+    /* BUTTONS STACK */
+    .project-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-neo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .github-link {
+        text-align: center;
+    }
+}
+
+
+/* Small Phones */
+@media (max-width: 480px) {
+
+    .projects-hero {
+        padding: 90px 5% 50px;
+    }
+
+    .hero-description-box {
+        margin-top: 25px;
+    }
+
+    .main-display {
+        height: 180px;
+    }
+
+    .status-badge {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+
+    .project-info {
+        padding: 20px;
+    }
+}
+/* --- NO FOOTER CODE ALLOWED --- */

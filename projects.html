@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Princess Angela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">cessy<span>.</span></a>
+        
+        <div class="nav-actions">
+            <div class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contacts</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="projects-container">
+    <section class="projects-hero">
+        <div class="reveal">
+            <h1>Featured <span>Projects</span></h1>
+            <div class="hero-description-box">
+                <p>A deep dive into my work, highlighting the features and tech stacks behind every build. Each project is a unique look at how I tackle responsive development and functional design.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-grid">
+        <article class="project-card featured reveal">
+            <div class="project-img-wrapper">
+                <div class="status-badge">FULL STACK</div>
+                <div class="main-display">
+                    <img src="assets/images/glamTips.png" alt="GlamTips Main" class="gallery-main">
+                </div>
+                <div class="thumbnail-strip">
+                    <img src="assets/images/glamTips.png" class="thumb active" onclick="changeImg(this)">
+                    <img src="assets/images/glamtips-2.png" class="thumb" onclick="changeImg(this)">
+                    <img src="assets/images/glamtips-3.png" class="thumb" onclick="changeImg(this)">
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="tech-tags">
+                    <span>VUE.JS</span><span>NODE.JS</span><span>MONGODB</span><span>EXPRESS</span>
+                </div>
+                <h3>GlamTips Nail & Lashes</h3>
+                <p><strong>Purpose:</strong> A full-stack management system for beauty salons to modernize their booking process.</p>
+                <p><strong>Features:</strong> Dynamic service catalog, real-time database integration, and a secure admin dashboard.</p>
+                <div class="project-links">
+                    <a href="https://glamtips.onrender.com" class="btn-neo" target="_blank">Live View</a>
+                    <a href="https://github.com/PrincessLacanlale/GlamTips" class="github-link" target="_blank"><i class="fab fa-github"></i> Source</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card reveal delay-2">
+            <div class="project-img-wrapper">
+                <div class="status-badge">CMS</div>
+                <div class="main-display">
+                    <img src="assets/images/LMLwordpress.png" alt="LML WordPress" class="gallery-main">
+                </div>
+                <div class="thumbnail-strip">
+                    <img src="assets/images/LMLwordpress.png" class="thumb active" onclick="changeImg(this)">
+                    <img src="assets/images/lmlwp-2.png" class="thumb" onclick="changeImg(this)">
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="tech-tags"><span>WORDPRESS</span><span>SEO</span><span>BRANDING</span></div>
+                <h3>LML Art & Sign: Official</h3>
+                <p><strong>Purpose:</strong> A professional business platform for physical signage services.</p>
+                <p><strong>Features:</strong> Optimized content architecture and clean digital branding.</p>
+                <div class="project-links">
+                    <a href="https://lmlartsnsign.com/" class="btn-neo" target="_blank">Live View</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card reveal delay-3">
+            <div class="project-img-wrapper">
+                <div class="status-badge">FRONTEND</div>
+                <div class="main-display">
+                    <img src="assets/images/tarpprinting.png" alt="LML Printing" class="gallery-main">
+                </div>
+                <div class="thumbnail-strip">
+                    <img src="assets/images/tarpprinting.png" class="thumb active" onclick="changeImg(this)">
+                    <img src="assets/images/tarpprinting-2.png" class="thumb" onclick="changeImg(this)">
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="tech-tags"><span>HTML5</span><span>CSS3</span><span>UI/UX</span></div>
+                <h3>LML Printing Portfolio</h3>
+                <p><strong>Purpose:</strong> A digital storefront showcasing high-resolution print works.</p>
+                <p><strong>Features:</strong> Responsive masonry gallery and integrated inquiry forms.</p>
+                <div class="project-links">
+                    <a href="https://princesslacanlale.github.io/LmlTarpaulinPrinting/" class="btn-neo" target="_blank">Live View</a>
+                    <a href="https://github.com/PrincessLacanlale/LmlTarpaulinPrinting" class="github-link" target="_blank"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card featured reveal delay-1">
+            <div class="project-img-wrapper">
+                <div class="main-display">
+                    <img src="assets/images/watchflix1.png" alt="WatchFlix Main" class="gallery-main">
+                </div>
+                <div class="thumbnail-strip">
+                    <img src="assets/images/watchflix1.png" class="thumb active" onclick="changeImg(this)">
+                    <img src="assets/images/watchflix.png" class="thumb" onclick="changeImg(this)"> 
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="tech-tags"><span>JAVA</span></div>
+                <h3>WatchFlix-Subscription</h3>
+                <p><strong>Purpose:</strong> A Java application designed to track streaming plans and user payments.</p>
+                <p><strong>Features:</strong> Automated status tracking and fail-safe error validation.</p>
+                <div class="project-links">
+                    <a href="https://github.com/PrincessLacanlale/WatchFlix-Subscription-Application.git" class="github-link" target="_blank"><i class="fab fa-github"></i> Source</a>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer class="main-footer">
+        <div class="rope-divider"></div>
+        
+        <div class="footer-container">
+            <div class="footer-col brand-info">
+                <h2 class="logo">cessy<span>.</span></h2>
+                <p>Aspiring Web Developer creating simple and user-friendly websites.</p>
+                <div class="footer-icons">
+                    <a href="https://github.com/PrincessLacanlale" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:lacanlaleprincess28@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/princess-lacanlale/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col quick-links">
+                <h4>Quick Links</h4>
+                <div class="zigzag-underline"></div>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> HOME</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> ABOUT</a></li>
+                    <li><a href="projects.html"><i class="fas fa-chevron-right"></i> PROJECTS</a></li>
+                    <li><a href="resume.html"><i class="fas fa-chevron-right"></i> RESUME</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-details">
+                <h4>Contact</h4>
+                <div class="zigzag-underline"></div>
+                <p><i class="fas fa-map-marker-alt"></i> Mabalacat City, Pampanga</p>
+                <p><i class="fas fa-envelope"></i> lacanlaleprincess28@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 0992 215 4478</p>
+            </div>
+        </div>
+        
+        <div class="footer-wave-bg"></div>
+    </footer>
+
+<script>
+    // 1. Image Gallery Logic
+    function changeImg(thumbnail) {
+        const container = thumbnail.closest('.project-img-wrapper');
+        const mainImg = container.querySelector('.gallery-main');
+        const thumbs = container.querySelectorAll('.thumb');
+        mainImg.src = thumbnail.src;
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumbnail.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // 2. Persistent Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            icon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+        });
+
+        // 3. Hamburger Menu & X Animation
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active'); // This triggers the X
+            navMenu.classList.toggle('active');   // This slides the menu
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active'); 
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // 4. Reveal Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    });
+</script>
+
+</body>
+</html>

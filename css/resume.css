@@ -1,0 +1,263 @@
+/* ==========================================================================
+   1. ROOT VARIABLES & THEMES (Synced with Contact Page)
+   ========================================================================== */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --neo-pink: #f78da7;
+    --neo-yellow: #fdd835;
+    --charcoal: #2b2b2b;
+    --border-size: 4px;
+
+    /* Light Mode Gradient: Pink to Soft Yellow */
+    --bg-gradient: linear-gradient(180deg, #ff9eb5 0%, #fffbd4 100%);
+    --container-bg: #ffffff;
+    --main-text: #000000;
+    --sidebar-bg: #2b2b2b;
+    --card-bg: #fdfdfd;
+}
+
+body.dark-mode {
+    /* Dark Mode Gradient: Black to Pink */
+    --bg-gradient: linear-gradient(180deg, #000000 40%, #f78da7 100%);
+    --container-bg: #1a1a1a;
+    --main-text: #ffffff;
+    --sidebar-bg: #000000;
+    --card-bg: #2d2d2d;
+    --white: #1a1a1a;
+}
+
+/* ==========================================================================
+   2. LAYOUT STRUCTURE
+   ========================================================================== */
+body.resume-page {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--main-text);
+    transition: background 0.3s ease;
+}
+
+.resume-wrapper {
+    padding: clamp(100px, 12vh, 160px) 5% 80px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.resume-container {
+    display: flex;
+    max-width: 1100px;
+    width: 100%;
+    background: var(--container-bg);
+    border: var(--border-size) solid var(--black);
+    box-shadow: 16px 16px 0 var(--black);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .resume-container {
+    border-color: #ffffff;
+    box-shadow: 16px 16px 0 var(--neo-pink);
+}
+
+.resume-container.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   3. SIDEBAR (Left Column)
+   ========================================================================== */
+.resume-sidebar {
+    flex: 1;
+    min-width: 300px;
+    background: var(--sidebar-bg);
+    color: #ffffff;
+    padding: 50px 30px;
+    border-right: var(--border-size) solid var(--black);
+}
+
+body.dark-mode .resume-sidebar {
+    border-right-color: #ffffff;
+}
+
+.resume-sidebar img {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto 35px;
+    filter: drop-shadow(4px 4px 0px var(--neo-pink));
+}
+
+.sidebar-group h3 {
+    color: var(--neo-yellow);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 3px solid var(--neo-pink);
+    margin: 30px 0 15px;
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contact-info p {
+    font-size: 0.85rem;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-info i {
+    color: var(--neo-pink);
+    width: 20px;
+}
+
+/* Skill Tags */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tags span {
+    background: #333;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 5px 12px;
+    border: 1px solid var(--neo-yellow);
+    box-shadow: 2px 2px 0px var(--neo-yellow);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   4. MAIN CONTENT (Right Column)
+   ========================================================================== */
+.resume-main {
+    flex: 2.5;
+    padding: 60px;
+}
+
+.resume-header h1 {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    margin: 0;
+}
+
+.highlight {
+    color: var(--neo-pink);
+    -webkit-text-stroke: 1.5px var(--black);
+}
+
+body.dark-mode .highlight {
+    -webkit-text-stroke: 1.5px #ffffff;
+}
+
+.job-tag {
+    background: var(--neo-yellow);
+    color: #000;
+    padding: 8px 20px;
+    display: inline-block;
+    border: 3px solid var(--black);
+    font-weight: 900;
+    margin: 20px 0;
+    box-shadow: 5px 5px 0px var(--black);
+}
+
+.section-title {
+    background: var(--neo-pink);
+    color: #fff;
+    padding: 8px 25px;
+    display: inline-block;
+    border: 3px solid var(--black);
+    margin: 40px 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    transform: rotate(-1deg);
+}
+
+/* Cards */
+.content-box,
+.experience-card {
+    border: 3px solid var(--black);
+    padding: 25px;
+    background: var(--card-bg);
+    box-shadow: 8px 8px 0 var(--black);
+    margin-bottom: 25px;
+    transition: 0.2s ease;
+}
+
+body.dark-mode .content-box,
+body.dark-mode .experience-card {
+    border-color: #ffffff;
+    box-shadow: 8px 8px 0 var(--neo-pink);
+}
+
+.experience-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 var(--neo-yellow);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.date-badge {
+    background: var(--neo-yellow);
+    color: #000;
+    padding: 4px 12px;
+    border: 2px solid var(--black);
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   5. BUTTONS
+   ========================================================================== */
+.btn-neo {
+    background: var(--white);
+    color: var(--main-text);
+    padding: 12px 25px;
+    border: 3px solid var(--black);
+    font-weight: 900;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 6px 6px 0 var(--black);
+    transition: 0.2s;
+}
+
+body.dark-mode .btn-neo {
+    border-color: #ffffff;
+    box-shadow: 6px 6px 0 var(--neo-pink);
+}
+
+.btn-neo:hover {
+    background: var(--neo-yellow);
+    color: #000;
+    transform: translate(-3px, -3px);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE & PRINT
+   ========================================================================== */
+@media (max-width: 850px) {
+    .resume-container { flex-direction: column; }
+    .resume-sidebar { border-right: none; border-bottom: var(--border-size) solid var(--black); text-align: center; }
+    .skill-tags { justify-content: center; }
+    .resume-main { padding: 40px 25px; }
+    .exp-header { flex-direction: column; gap: 10px; }
+}
+
+@media print {
+    header, nav, .action-bar, .theme-toggle, .main-footer { display: none !important; }
+    .resume-wrapper { padding: 0 !important; }
+    .resume-container { box-shadow: none !important; border: 1px solid #000 !important; }
+}
+
+/* --- NO FOOTER CSS HERE --- */

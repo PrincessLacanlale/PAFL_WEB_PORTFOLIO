@@ -1,0 +1,324 @@
+/* --- 1. THEME LOGIC & VARIABLES --- */
+:root {
+    --pink: #ff85a2;
+    --dark-pink: #e0748d;
+    --neo-yellow: #fdd835;
+    --bg-cream: #fdf5f2;
+    --text-dark: #333;
+    --white: #ffffff;
+    --black: #000000;
+    --accent-blue: #3b82f6; /* Blue accent from Tyra.dev reference */
+
+    --current-bg: var(--bg-cream);
+    --current-text: var(--text-dark);
+    --current-nav-bg: rgba(253, 245, 242, 0.95);
+    --current-border: var(--black);
+    --current-card: var(--white);
+}
+
+body.dark-mode {
+    --current-bg: #1a1a1a;
+    --current-text: #ffffff;
+    --current-nav-bg: rgba(26, 26, 26, 0.95);
+    --current-border: #ffffff;
+    --current-card: #2d2d2d;
+}
+
+/* --- 2. GLOBAL STYLES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--current-bg);
+    color: var(--current-text);
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+}
+
+/* --- 3. NAVIGATION --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background-color: var(--current-nav-bg);
+    backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;
+    border-bottom: 2px solid var(--current-border);
+}
+
+/* --- HEADER & NAV ACTIONS --- */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between moon icon and hamburger */
+    z-index: 1100;
+}
+
+.theme-toggle {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--current-text);
+}
+
+/* --- HAMBURGER CORE --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: var(--current-text);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- MOBILE BREAKPOINT --- */
+@media (max-width: 850px) {
+    .menu-toggle { display: flex; }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hidden */
+        width: 100%;
+        height: 100vh;
+        background: var(--current-card);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 1000;
+        gap: 30px;
+    }
+
+    .nav-menu.active {
+        right: 0; /* Slide in */
+    }
+
+    /* THE 'X' ANIMATION */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+}
+
+.logo {
+    font-weight: 900; font-size: 1.8rem; text-decoration: none;
+    color: var(--current-text); text-transform: lowercase;
+}
+.logo span { color: var(--pink); }
+
+.nav-menu { display: flex; list-style: none; align-items: center; gap: 40px; }
+.nav-menu li a {
+    text-decoration: none; color: var(--current-text);
+    font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+}
+.nav-menu li a.active { color: var(--pink); }
+
+.menu-toggle {
+    display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001;
+}
+.menu-toggle .bar {
+    width: 30px; height: 4px; background-color: var(--current-text);
+    border: 1px solid var(--current-border); transition: 0.3s;
+}
+
+.theme-toggle {
+    background: var(--current-card); border: 2px solid var(--current-border);
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; box-shadow: 4px 4px 0px var(--current-border);
+    transition: 0.2s; color: var(--current-text);
+}
+
+/* --- 4. HERO SECTION --- */
+.hero { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 80px 8%; }
+.hero-container { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; gap: 60px; }
+
+.subtitle { 
+    display: inline-block; background: var(--neo-yellow); color: #000; 
+    font-weight: 900; padding: 8px 20px; border: 3px solid var(--current-border);
+    box-shadow: 5px 5px 0px var(--current-border); text-transform: uppercase; margin-bottom: 20px;
+}
+
+h1 { font-size: 4.5rem; font-weight: 900; line-height: 0.9; margin-bottom: 30px; text-transform: uppercase; color: var(--current-text); }
+h1 span { 
+    color: var(--pink); -webkit-text-stroke: 2px var(--current-border); 
+    text-shadow: 4px 4px 0px var(--current-border); 
+}
+
+.description-box {
+    background: var(--current-card); padding: 25px; border: 3px solid var(--current-border);
+    box-shadow: 10px 10px 0px var(--current-border); margin-bottom: 45px;
+}
+
+.btn {
+    padding: 18px 40px; text-decoration: none; font-weight: 900; text-transform: uppercase;
+    border: 4px solid var(--current-border); transition: 0.3s; display: inline-block;
+}
+.btn-pink { background: var(--pink); color: #000; box-shadow: 8px 8px 0px var(--current-border); }
+.btn-outline { background: var(--current-card); color: var(--current-text); box-shadow: 8px 8px 0px var(--current-border); margin-left: 15px; }
+
+.blob-shape {
+    width: 450px; height: 470px; background: var(--pink);
+    border: 4px solid var(--current-border); box-shadow: 20px 20px 0px var(--current-border);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morphing 8s ease-in-out infinite;
+    display: flex; justify-content: center; align-items: center; overflow: hidden;
+}
+
+@keyframes morphing {
+    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+}
+
+/* --- 5. FOOTER (DESKTOP) --- */
+.main-footer { 
+    background-color: var(--pink); 
+    color: var(--black); 
+    border-top: 5px solid var(--current-border); 
+    padding: 0 0 60px; 
+    position: relative;
+    text-align: left;
+}
+
+body.dark-mode .main-footer { 
+    background-color: var(--current-card); 
+    color: var(--white); 
+}
+
+/* The Rope Divider - Preserved Design */
+.rope-divider {
+    height: 12px; 
+    background-image: repeating-linear-gradient(45deg, #c49a6c, #c49a6c 10px, #fdf6e3 10px, #fdf6e3 20px);
+    border-bottom: 3px solid var(--current-border); 
+    margin-bottom: 50px;
+}
+
+.footer-container { 
+    display: grid; 
+    grid-template-columns: 1.5fr 1fr 1.2fr; 
+    gap: 40px; 
+    padding: 0 8%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    align-items: start; 
+}
+
+.footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+
+.zigzag-underline {
+    height: 8px; width: 60px; margin: 10px 0 25px 0;
+    background: linear-gradient(135deg, transparent 25%, currentColor 25%, currentColor 50%, transparent 50%, transparent 75%, currentColor 75%),
+                linear-gradient(225deg, transparent 25%, currentColor 25%, currentColor 50%, transparent 50%, transparent 75%, currentColor 75%);
+    background-size: 10px 10px;
+}
+
+.quick-links ul { list-style: none; padding: 0; }
+.quick-links ul li { margin-bottom: 12px; }
+.quick-links ul li a {
+    text-decoration: none; color: inherit; font-weight: 600;
+    display: flex; align-items: center; gap: 12px; transition: 0.3s ease;
+}
+
+.footer-icons { display: flex; gap: 15px; margin-top: 25px; }
+.footer-icons a {
+    width: 45px; height: 45px; background: var(--white); border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 3px solid var(--black); box-shadow: 4px 4px 0px var(--black); 
+    color: var(--black); transition: 0.2s ease;
+}
+
+/* --- 6. RESPONSIVE UNITY (MOBILE) --- */
+@media (max-width: 1024px) {
+    h1 { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+    /* Layout Centering */
+    .nav-menu {
+        position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px);
+        background: var(--current-bg); flex-direction: column; padding: 40px; gap: 30px;
+        transition: 0.4s; border-top: 2px solid var(--current-border);
+    }
+    .nav-menu.active { left: 0; }
+    .menu-toggle { display: flex; }
+    .hero-container { flex-direction: column-reverse; text-align: center; }
+    .blob-shape { width: 300px; height: 320px; margin: 0 auto; }
+
+    /* FOOTER MOBILE UNITY */
+    .main-footer {
+        background-color: #000000 !important; 
+        color: #ffffff !important;
+        text-align: center;
+        padding: 0 0 60px; /* Padding-top is handled by rope margin */
+        border-top: none;
+    }
+
+    /* FIX: Rope is now visible on mobile! */
+    .rope-divider { 
+        display: block; 
+        width: 100%;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .footer-col {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Blue Underline Accent (Unified with Tyra.dev style) */
+    .zigzag-underline {
+        height: 3px;
+        width: 35px;
+        background: var(--accent-blue) !important;
+        margin: 10px auto 25px auto;
+        border: none;
+    }
+
+    /* Clean Center-Aligned Links */
+    .quick-links ul li a {
+        justify-content: center;
+        font-weight: 500;
+        opacity: 0.9;
+        text-transform: capitalize;
+    }
+    .quick-links ul li a i { display: none; } 
+
+    .contact-details p { justify-content: center; opacity: 0.8; }
+
+    /* Modern Dark Square Icons */
+    .footer-icons {
+        justify-content: center;
+        margin: 30px auto 0;
+        gap: 15px;
+    }
+
+    .footer-icons a {
+        background: #333333;
+        border: none;
+        border-radius: 12px; 
+        box-shadow: none;
+        width: 50px;
+        height: 50px;
+        color: #ffffff;
+    }
+
+    .footer-icons a:hover {
+        background: #444;
+        transform: translateY(-3px);
+    }
+}

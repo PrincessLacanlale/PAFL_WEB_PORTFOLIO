@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess Angela | Web Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">cessy<span>.</span></a>
+            
+            <div class="nav-actions">
+                <div class="theme-toggle" id="theme-toggle" style="cursor: pointer;">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-container"> 
+                <div class="hero-content">
+                    <p class="subtitle reveal">WEB DEVELOPER || UI/UX DESIGNER</p>
+                    <h1 class="reveal delay-1">Hello, I'm <br><span>Princess Angela</span></h1>
+                    <div class="description-box reveal delay-2">
+                        <p class="description">
+                            I build responsive, modern websites with a focus on clear code, intuitive design, and seamless user experiences. I turn ideas into websites that work—and impress.
+                        </p>
+                    </div>
+                    <div class="hero-btns reveal delay-3">
+                        <a href="projects.html" class="btn btn-pink">View Projects</a>
+                        <a href="contact.html" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+
+                <div class="hero-image reveal">
+                    <div class="blob-wrapper">
+                        <div class="sparkle s1"></div>
+                        <div class="sparkle s2"></div>
+                        <div class="sparkle s3"></div>
+                        <div class="blob-shape">
+                            <img src="assets/images/index.png" alt="Princess Angela" class="hero-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="rope-divider"></div>
+        <div class="footer-container">
+            <div class="footer-col brand-info">
+                <h2 class="logo">cessy<span>.</span></h2>
+                <p>Aspiring Web Developer creating simple and user-friendly websites.</p>
+                <div class="footer-icons">
+                    <a href="https://github.com/PrincessLacanlale" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:lacanlaleprincess28@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/princess-lacanlale/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col quick-links">
+                <h4>Quick Links</h4>
+                <div class="zigzag-underline"></div>
+                <ul>
+                    <li><a href="index.html"> HOME</a></li>
+                    <li><a href="about.html"> ABOUT</a></li>
+                    <li><a href="projects.html"> PROJECTS</a></li>
+                    <li><a href="resume.html"> RESUME</a></li>
+                    <li><a href="contact.html"> CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-details">
+                <h4>Contact</h4>
+                <div class="zigzag-underline"></div>
+                <p><i class="fas fa-map-marker-alt"></i> Mabalacat City, Pampanga</p>
+                <p><i class="fas fa-envelope"></i> lacanlaleprincess28@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 0992 215 4478</p>
+            </div>
+        </div>
+        <div class="footer-wave-bg"></div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                icon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+            });
+
+            // Mobile Menu & X Animation
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Scroll Reveal
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

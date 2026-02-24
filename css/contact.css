@@ -1,0 +1,198 @@
+/* --- 1. THEME VARIABLES (Keep these for the Form) --- */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --neo-pink: #f78da7;
+    --neo-yellow: #fdd835;
+    --form-bg: #f8f8f8;
+    --text-color: #000000;
+    --bg-gradient: linear-gradient(180deg, #ff9eb5 0%, #fffbd4 100%);
+}
+
+body.dark-mode {
+    --text-color: #ffffff;
+    --bg-gradient: linear-gradient(180deg, #000000 40%, #f78da7 100%);
+    --white: #1a1a1a; 
+    --form-bg: #2d2d2d;
+}
+
+/* --- 2. CONTACT PAGE BASE --- */
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-color);
+}
+
+.neo-contact-wrapper {
+    padding: 160px 8% 100px;
+    min-height: 100vh;
+}
+
+/* --- 3. THE GRID --- */
+.contact-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* --- 4. LEFT SIDE: INFO & SOCIALS --- */
+.neo-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 0.9;
+}
+
+.neo-title span {
+    color: var(--neo-pink);
+    -webkit-text-stroke: 1.5px var(--black);
+}
+
+body.dark-mode .neo-title span {
+    -webkit-text-stroke: 1.5px #ffffff;
+}
+
+.intro-text {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    max-width: 500px;
+    font-weight: 600;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    box-shadow: 6px 6px 0px var(--black);
+}
+
+body.dark-mode .info-box {
+    border-color: #ffffff;
+    box-shadow: 6px 6px 0px var(--neo-pink);
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    background: var(--neo-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--black);
+    color: #000;
+}
+
+.neo-social-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--white);
+    border: 3px solid var(--black);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1.4rem;
+    box-shadow: 4px 4px 0px var(--black);
+    margin-right: 12px;
+}
+
+body.dark-mode .neo-social-btn {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+/* --- 5. RIGHT SIDE: THE FORM --- */
+.neo-form {
+    background: var(--white);
+    border: 4px solid var(--black);
+    padding: 45px;
+    box-shadow: 15px 15px 0px var(--black);
+}
+
+body.dark-mode .neo-form {
+    border-color: #ffffff;
+    box-shadow: 15px 15px 0px var(--neo-pink);
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.neo-social-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--neo-pink);
+    background: var(--neo-yellow);
+    color: var(--black);
+}
+
+.info-box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--neo-pink);
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 3px solid var(--black);
+    background: var(--form-bg);
+    color: inherit;
+    font-family: inherit;
+    box-shadow: 4px 4px 0px var(--black);
+    outline: none;
+}
+
+body.dark-mode .input-group input, 
+body.dark-mode .input-group textarea {
+    border-color: #ffffff;
+}
+
+.neo-submit-btn {
+    width: 100%;
+    padding: 20px;
+    background: var(--neo-yellow);
+    border: 4px solid var(--black);
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 6px 6px 0px var(--black);
+    transition: 0.2s;
+}
+
+.neo-submit-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--black);
+}
+
+/* --- 6. ANIMATIONS & RESPONSIVE --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 950px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .neo-title { font-size: 3rem; }
+    .neo-form { padding: 30px; }
+}
+
