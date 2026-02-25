@@ -1,5 +1,5 @@
 /* --- 1. THEME LOGIC & VARIABLES --- */
-:root {
+/* :root {
     --pink: #ff85a2;
     --dark-pink: #e0748d;
     --neo-yellow: #fdd835;
@@ -15,8 +15,33 @@
     --current-border: var(--black);
     --current-card: var(--white);
     --footer-bg: var(--pink);
+} */
+
+:root {
+    /* --- Reference Image Colors --- */
+    --pink: #ff608c;           /* The vibrant pink from your blob */
+    --neo-yellow: #fdd835;     
+    --bg-cream: #fcebd7;       /* The warm cream background */
+    --white: #ffffff;
+    --black: #000000;
+    
+    /* --- Refined System Colors --- */
+    --current-bg: var(--bg-cream);
+    --current-text: #2d2d2d;
+    --current-nav-bg: rgba(252, 235, 215, 0.9);
+    --current-border: var(--black);
+    --current-card: var(--white);
+    --footer-bg: var(--pink);
 }
 
+body.dark-mode {
+    --current-bg: #1a1a1a;
+    --current-text: #ffffff;
+    --current-nav-bg: rgba(26, 26, 26, 0.95);
+    --current-border: #ffffff;
+    --current-card: #2d2d2d;
+    --footer-bg: var(--black);
+}
 body.dark-mode {
     --current-bg: #1a1a1a;
     --current-text: #ffffff;
