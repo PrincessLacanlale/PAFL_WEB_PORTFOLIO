@@ -1,268 +1,345 @@
 /* --- 1. VARIABLES & THEMES --- */
 :root {
-    --bg-color: #fcecbe;
-    --text-color: #000000;
-    --primary-pink: #ff85a2;
-    --accent-yellow: #fdd835;
-    --white: #ffffff;
-    --border-thickness: 3px;
-    --neo-shadow: 8px 8px 0px #000;
-    --bg-gradient: linear-gradient(180deg, #ff9eb5 0%, #fffbd4 100%);
-    --current-hero-bg: transparent; 
+    --bg-color: #fcecbe;
+    --text-color: #000000;
+    --primary-pink: #ff85a2;
+    --accent-yellow: #fdd835;
+    --white: #ffffff;
+    --border-thickness: 3px;
+    --neo-shadow: 8px 8px 0px #000;
+    
+    --bg-gradient: linear-gradient(180deg, #ff9eb5 0%, #fffbd4 100%);
 }
 
 body.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: #ffffff;
-    --white: #262626;
-    --neo-shadow: 8px 8px 0px var(--primary-pink);
-    --current-hero-bg: linear-gradient(180deg, #000000 50%, #eb86a7 100%);
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --white: #262626;
+    --neo-shadow: 8px 8px 0px var(--primary-pink);
+    --current-hero-bg: linear-gradient(180deg, #000000 50%, #eb86a7 100%);
 }
 
 /* --- 2. GENERAL RESET --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    overflow-x: hidden;
-    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease;
 }
 
 /* --- 3. NAVIGATION --- */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background: var(--bg-color);
-    border-bottom: var(--border-thickness) solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: var(--bg-color);
+    border-bottom: var(--border-thickness) solid #000;
 }
 
 .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 900;
-    text-decoration: none;
-    color: var(--text-color);
-    text-transform: lowercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: lowercase;
 }
 
-.logo span { 
-    color: var(--primary-pink); 
-    display: inline-block;
+.logo span { 
+    color: var(--primary-pink); 
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.logo:hover span {
+    animation: wiggle 0.5s ease infinite;
 }
 
 .nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 30px;
+    display: flex;
+    list-style: none;
+    gap: 30px;
 }
 
 .nav-menu a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    position: relative;
-    transition: 0.3s;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    position: relative;
+    transition: 0.3s;
 }
 
-.nav-menu a:hover { color: var(--primary-pink); }
+.nav-menu a:hover {
+    color: var(--primary-pink);
+}
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background: var(--primary-pink);
+}
 
-.nav-actions { display: flex; align-items: center; gap: 20px; }
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
 /* --- 4. HERO SECTION --- */
 .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 140px 8% 80px;
-    min-height: 100vh;
-    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-    border-bottom: 5px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 140px 8% 80px;
+    min-height: 100vh;
+    background: var(--current-hero-bg);
+    background-image: var(--current-hero-bg), url('https://www.transparenttextures.com/patterns/stardust.png');
+    border-bottom: 5px solid #000;
 }
 
 .hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    gap: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    gap: 60px;
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 550px;
+    flex: 1;
+    max-width: 550px;
 }
 
 /* --- 5. TYPOGRAPHY & BOXES --- */
 .subtitle {
-    display: inline-block;
-    background: var(--accent-yellow);
-    color: #000;
-    font-weight: 900;
-    padding: 8px 20px;
-    border: var(--border-thickness) solid #000;
-    margin-bottom: 25px;
-    box-shadow: 5px 5px 0px #000;
-    text-transform: uppercase;
+    display: inline-block;
+    background: var(--accent-yellow);
+    color: #000;
+    font-weight: 900;
+    padding: 8px 20px;
+    border: var(--border-thickness) solid #000;
+    margin-bottom: 25px;
+    box-shadow: 5px 5px 0px #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 900;
-    line-height: 0.95;
-    margin-bottom: 30px;
-    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 30px;
+    text-transform: uppercase;
 }
 
 h1 span {
-    color: var(--primary-pink);
-    -webkit-text-stroke: 1.5px #000;
-    text-shadow: 4px 4px 0px #000;
-    display: inline-block;
-    animation: floatText 3s ease-in-out infinite;
+    color: var(--primary-pink);
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: 4px 4px 0px #000;
+    display: inline-block;
+    animation: floatText 3s ease-in-out infinite;
 }
 
 .description-box {
-    background: var(--white);
-    padding: 25px;
-    border: var(--border-thickness) solid #000;
-    box-shadow: 10px 10px 0px #000;
-    margin-bottom: 45px;
+    background: var(--white);
+    padding: 25px;
+    border: var(--border-thickness) solid #000;
+    box-shadow: 10px 10px 0px #000;
+    margin-bottom: 45px;
+    transition: 0.3s ease;
 }
 
 .description {
-    line-height: 1.6;
-    font-size: 1.1rem;
-    font-weight: 600;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 /* --- 6. BUTTONS --- */
 .hero-btns {
-    display: flex;
-    gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 .btn {
-    padding: 18px 40px;
-    text-decoration: none;
-    font-weight: 900;
-    text-transform: uppercase;
-    border: 4px solid #000;
-    display: inline-block;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 18px 40px;
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 4px solid #000;
+    display: inline-block;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .btn-pink { background: var(--primary-pink); color: #000; box-shadow: var(--neo-shadow); }
 .btn-outline { background: var(--white); color: var(--text-color); box-shadow: var(--neo-shadow); }
 
 .btn:hover {
-    transform: translate(-5px, -5px) scale(1.05);
-    box-shadow: 15px 15px 0px #000;
+    transform: translate(-5px, -5px) scale(1.05);
+    box-shadow: 15px 15px 0px #000;
 }
 
-/* --- 7. THE FIXED IMAGE & BLOB (AS PER REFERENCE) --- */
+/* --- 7. THE FIXED IMAGE & BLOB --- */
 .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centers the whole unit vertically */
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .blob-wrapper {
-    position: relative;
-    z-index: 1;
+    position: relative;
 }
 
 .blob-shape {
-    width: clamp(320px, 38vw, 480px);
-    height: clamp(350px, 42vw, 520px);
-    background: var(--primary-pink); /* Blob is now Pink like reference */
-    border: 5px solid #000;
-    box-shadow: 20px 20px 0px #000;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    animation: morphing 8s ease-in-out infinite;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Keeps person sitting on the bottom border */
-    overflow: hidden; /* Clips image to the blob shape */
+    width: clamp(300px, 35vw, 450px);
+    height: clamp(350px, 40vw, 500px);
+    background: var(--accent-yellow); 
+    border: 5px solid #000;
+    box-shadow: 20px 20px 0px #000;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morphing 8s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* FIX: Holds image to the bottom border */
+    overflow: hidden;
 }
 
 .hero-img {
-    width: 100%;
-    height: 100%; 
-    object-fit: cover; /* NO CROPPING: Fills the space naturally */
-    object-position: center top; /* Focuses on the face/upper body */
-    transition: 0.5s ease;
+    width: 100%;
+    height: 92%; 
+    object-fit: contain; 
+    object-position: bottom;
+    transition: 0.5s ease;
 }
 
 .blob-wrapper:hover .hero-img {
-    transform: scale(1.05);
+    transform: scale(1.1) rotate(-2deg);
 }
 
 /* --- 8. MOVEMENT & ANIMATIONS --- */
+
+/* Entrance Reveal Logic */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
 @keyframes floatText {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
 }
 
 @keyframes morphing {
-    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-    25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-    50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-    75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+    50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+    75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
 }
-
-/* Floating Sparkles behind the blob */
-.sparkle {
-    position: absolute;
-    background: var(--accent-yellow);
-    border: 3px solid #000;
-    border-radius: 50%;
-    animation: float 4s ease-in-out infinite;
-    box-shadow: 3px 3px 0px #000;
-    z-index: -1;
-}
-
-.s1 { width: 35px; height: 35px; top: -5%; left: -5%; }
-.s2 { width: 25px; height: 25px; bottom: 5%; right: -5%; animation-delay: 1s; }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(10deg); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-25px) rotate(10deg); }
 }
+
+.sparkle {
+    position: absolute;
+    background: var(--accent-yellow);
+    border: 3px solid #000;
+    border-radius: 50%;
+    animation: float 4s ease-in-out infinite;
+    box-shadow: 3px 3px 0px #000;
+    z-index: 5;
+}
+
+.s1 { width: 35px; height: 35px; top: 5%; left: -5%; }
+.s2 { width: 25px; height: 25px; bottom: 15%; right: -5%; animation-delay: 1s; }
+.s3 { width: 45px; height: 45px; top: 40%; right: -12%; animation-delay: 2s; background: var(--primary-pink); }
 
 /* --- 9. RESPONSIVE --- */
 @media (max-width: 992px) {
-    .hero-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding-top: 40px;
-    }
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 60px;
+    }
 
-    .blob-shape {
-        width: 300px;
-        height: 340px;
-    }
+    .blob-shape {
+        width: 290px;
+        height: 330px;
+    }
 
-    .hero-btns {
-        flex-direction: column;
-        align-items: center;
-    }
+    h1 { font-size: 2.8rem; }
 
-    .btn { width: 100%; max-width: 300px; }
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn { width: 100%; max-width: 300px; }
+}
+
+/* Mobile Menu Toggle Hidden by Default */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    .nav-menu { display: none; }
+    .nav-menu.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        padding: 20px;
+        border-bottom: 3px solid #000;
+    }
 }
