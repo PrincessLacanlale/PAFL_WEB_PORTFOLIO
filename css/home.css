@@ -1,6 +1,5 @@
 /* --- HOME PAGE SPECIFIC STYLES --- */
 
-/* --- 1. HERO SECTION LAYOUT --- */
 .hero {
     display: flex;
     justify-content: center;
@@ -22,15 +21,15 @@
     flex: 1.2;
 }
 
-/* --- 2. HERO TYPOGRAPHY --- */
+/* --- HERO TYPOGRAPHY --- */
 .subtitle {
     display: inline-block;
     background: var(--neo-yellow);
-    color: #000;
+    color: var(--black);
     font-weight: 900;
     padding: 10px 20px;
-    border: var(--border-thickness) solid #000;
-    box-shadow: 5px 5px 0px #000;
+    border: 3px solid var(--current-border);
+    box-shadow: 5px 5px 0px var(--current-border);
     margin-bottom: 25px;
     font-size: 0.85rem;
     letter-spacing: 1px;
@@ -47,15 +46,15 @@ h1 {
 
 h1 span {
     color: var(--pink);
-    -webkit-text-stroke: 2px #000;
-    text-shadow: 6px 6px 0px #000;
+    -webkit-text-stroke: 2px var(--current-border);
+    text-shadow: 6px 6px 0px var(--current-border);
 }
 
 .description-box {
-    background: var(--white);
+    background: var(--current-card);
     padding: 30px;
-    border: var(--border-thickness) solid #000;
-    box-shadow: 12px 12px 0px #000;
+    border: 3px solid var(--current-border);
+    box-shadow: 12px 12px 0px var(--current-border);
     margin-bottom: 45px;
 }
 
@@ -63,9 +62,10 @@ h1 span {
     font-weight: 600; 
     line-height: 1.5;
     font-size: 1.1rem;
+    color: var(--current-text);
 }
 
-/* --- 3. BUTTONS --- */
+/* --- BUTTONS --- */
 .hero-btns { display: flex; gap: 20px; }
 
 .btn {
@@ -73,21 +73,21 @@ h1 span {
     text-decoration: none;
     font-weight: 900;
     text-transform: uppercase;
-    border: var(--border-thickness) solid #000;
+    border: 3px solid var(--current-border);
     transition: 0.2s;
     font-size: 1rem;
     display: inline-block;
 }
 
-.btn-pink { background: var(--pink); color: #000; box-shadow: var(--neo-shadow); }
-.btn-outline { background: var(--white); color: #000; box-shadow: var(--neo-shadow); }
+.btn-pink { background: var(--pink); color: var(--black); box-shadow: 8px 8px 0px var(--current-border); }
+.btn-outline { background: var(--white); color: var(--black); box-shadow: 8px 8px 0px var(--current-border); }
 
 .btn:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px #000;
+    box-shadow: 12px 12px 0px var(--current-border);
 }
 
-/* --- 4. MORPHING BLOB & IMAGE --- */
+/* --- MORPHING BLOB & IMAGE --- */
 .hero-image {
     flex: 1;
     display: flex;
@@ -104,8 +104,8 @@ h1 span {
     width: clamp(320px, 38vw, 480px);
     height: clamp(350px, 42vw, 520px);
     background: var(--pink);
-    border: 6px solid #000;
-    box-shadow: 25px 25px 0px #000;
+    border: 6px solid var(--current-border);
+    box-shadow: 25px 25px 0px var(--current-border);
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     animation: morphing 9s ease-in-out infinite;
     overflow: hidden;
@@ -122,50 +122,36 @@ h1 span {
     transition: transform 0.5s ease;
 }
 
-.blob-wrapper:hover .hero-img {
-    transform: scale(1.05);
-}
-
-/* --- 5. FLOATING SPARKLES --- */
+/* --- SPARKLES --- */
 .sparkle {
     position: absolute;
     background: var(--neo-yellow);
-    border: 3px solid #000;
+    border: 3px solid var(--current-border);
     border-radius: 50%;
     z-index: -1;
-    box-shadow: 4px 4px 0px #000;
+    box-shadow: 4px 4px 0px var(--current-border);
 }
 
-.s1 { width: 45px; height: 45px; top: -15px; left: -15px; background: var(--neo-yellow); }
+.s1 { width: 45px; height: 45px; top: -15px; left: -15px; }
 .s2 { width: 35px; height: 35px; bottom: 30px; right: -25px; background: var(--white); }
 .s3 { width: 25px; height: 25px; top: 40%; right: -40px; background: var(--pink); }
 
-/* --- 6. ANIMATIONS --- */
+/* --- ANIMATIONS --- */
 @keyframes morphing {
     0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
     33% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
     66% { border-radius: 67% 33% 47% 53% / 37% 70% 30% 63%; }
 }
 
-/* Scroll Reveal classes */
 .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 .delay-1 { transition-delay: 0.2s; }
 .delay-2 { transition-delay: 0.4s; }
 .delay-3 { transition-delay: 0.6s; }
 
-/* --- 7. MOBILE RESPONSIVE HERO --- */
 @media (max-width: 992px) {
-    .hero-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 40px;
-    }
+    .hero-container { flex-direction: column-reverse; text-align: center; gap: 40px; }
     .hero-btns { justify-content: center; }
-    .blob-shape {
-        width: 300px;
-        height: 340px;
-        box-shadow: 15px 15px 0px #000;
-    }
+    .blob-shape { width: 300px; height: 340px; }
     h1 { font-size: 2.8rem; }
 }
