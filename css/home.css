@@ -1,121 +1,6 @@
-/* --- 1. GLOBAL SETTINGS & VARIABLES --- */
-:root {
-    --bg-color: #fcecbe;
-    --text-color: #000000;
-    --primary-pink: #ff85a2;
-    --accent-yellow: #fdd835;
-    --white: #ffffff;
-    --border-thickness: 4px; /* Thick brutalist borders */
-    --neo-shadow: 8px 8px 0px #000; /* Hard shadow, no blur */
-}
+/* --- HOME PAGE SPECIFIC STYLES --- */
 
-body.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: #ffffff;
-    --white: #262626;
-    --neo-shadow: 8px 8px 0px var(--primary-pink);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    overflow-x: hidden;
-    transition: background-color 0.3s ease;
-    /* Neo-Brutalist Dot Pattern Background */
-    background-image: radial-gradient(rgba(0,0,0,0.2) 1.5px, transparent 1.5px);
-    background-size: 25px 25px;
-}
-
-/* --- GLITTER EFFECT --- */
-.glitter-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Allows you to click things underneath */
-    z-index: 9999;
-    opacity: 0; /* Hidden by default */
-    transition: opacity 0.5s ease;
-    
-    /* Creating the glitter particles using multiple radial gradients */
-    background-image: 
-        radial-gradient(circle, #fff 1px, transparent 1px),
-        radial-gradient(circle, #fff 1px, transparent 1px);
-    background-size: 100px 100px, 150px 150px;
-    background-position: 0 0, 50px 50px;
-}
-
-/* Show glitter only in Dark Mode */
-body.dark-mode .glitter-overlay {
-    opacity: 0.15; /* Adjust this for more/less intense glitter */
-    animation: glitter-shimmer 4s infinite linear;
-}
-
-/* Subtle animation to make the glitter "twinkle" */
-@keyframes glitter-shimmer {
-    0% { transform: translateY(0); }
-    50% { opacity: 0.1; }
-    100% { transform: translateY(-20px); }
-}
-
-/* --- 2. NAVIGATION --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 8%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background: var(--bg-color);
-    border-bottom: var(--border-thickness) solid #000;
-}
-
-.logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    text-decoration: none;
-    color: var(--text-color);
-    text-transform: lowercase;
-}
-
-.logo span { color: var(--primary-pink); }
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.nav-menu a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border: 3px solid transparent;
-    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.nav-menu a:hover, .nav-menu a.active {
-    background: var(--accent-yellow);
-    border-color: #000;
-    box-shadow: 4px 4px 0px #000;
-    transform: translate(-2px, -2px);
-}
-
-/* --- 3. HERO SECTION --- */
+/* --- 1. HERO SECTION LAYOUT --- */
 .hero {
     display: flex;
     justify-content: center;
@@ -137,10 +22,10 @@ nav {
     flex: 1.2;
 }
 
-/* --- 4. NEO-BRUTALIST TYPOGRAPHY --- */
+/* --- 2. HERO TYPOGRAPHY --- */
 .subtitle {
     display: inline-block;
-    background: var(--accent-yellow);
+    background: var(--neo-yellow);
     color: #000;
     font-weight: 900;
     padding: 10px 20px;
@@ -161,7 +46,7 @@ h1 {
 }
 
 h1 span {
-    color: var(--primary-pink);
+    color: var(--pink);
     -webkit-text-stroke: 2px #000;
     text-shadow: 6px 6px 0px #000;
 }
@@ -180,7 +65,7 @@ h1 span {
     font-size: 1.1rem;
 }
 
-/* --- 5. BUTTONS --- */
+/* --- 3. BUTTONS --- */
 .hero-btns { display: flex; gap: 20px; }
 
 .btn {
@@ -191,9 +76,10 @@ h1 span {
     border: var(--border-thickness) solid #000;
     transition: 0.2s;
     font-size: 1rem;
+    display: inline-block;
 }
 
-.btn-pink { background: var(--primary-pink); color: #000; box-shadow: var(--neo-shadow); }
+.btn-pink { background: var(--pink); color: #000; box-shadow: var(--neo-shadow); }
 .btn-outline { background: var(--white); color: #000; box-shadow: var(--neo-shadow); }
 
 .btn:hover {
@@ -201,7 +87,7 @@ h1 span {
     box-shadow: 12px 12px 0px #000;
 }
 
-/* --- 6. CENTERED IMAGE & MORPHING BLOB --- */
+/* --- 4. MORPHING BLOB & IMAGE --- */
 .hero-image {
     flex: 1;
     display: flex;
@@ -217,7 +103,7 @@ h1 span {
 .blob-shape {
     width: clamp(320px, 38vw, 480px);
     height: clamp(350px, 42vw, 520px);
-    background: var(--primary-pink);
+    background: var(--pink);
     border: 6px solid #000;
     box-shadow: 25px 25px 0px #000;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
@@ -225,13 +111,13 @@ h1 span {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Keeps person sitting on the bottom border */
+    align-items: flex-end; 
 }
 
 .hero-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures image fills the blob area perfectly */
+    object-fit: cover;
     object-position: center top;
     transition: transform 0.5s ease;
 }
@@ -240,61 +126,46 @@ h1 span {
     transform: scale(1.05);
 }
 
-/* --- 7. FLOATING SPARKLES --- */
+/* --- 5. FLOATING SPARKLES --- */
 .sparkle {
     position: absolute;
-    background: var(--accent-yellow);
+    background: var(--neo-yellow);
     border: 3px solid #000;
     border-radius: 50%;
     z-index: -1;
     box-shadow: 4px 4px 0px #000;
 }
 
-.s1 { width: 45px; height: 45px; top: -15px; left: -15px; background: var(--accent-yellow); }
+.s1 { width: 45px; height: 45px; top: -15px; left: -15px; background: var(--neo-yellow); }
 .s2 { width: 35px; height: 35px; bottom: 30px; right: -25px; background: var(--white); }
-.s3 { width: 25px; height: 25px; top: 40%; right: -40px; background: var(--primary-pink); }
+.s3 { width: 25px; height: 25px; top: 40%; right: -40px; background: var(--pink); }
 
-/* --- 8. ANIMATIONS --- */
+/* --- 6. ANIMATIONS --- */
 @keyframes morphing {
     0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
     33% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
     66% { border-radius: 67% 33% 47% 53% / 37% 70% 30% 63%; }
 }
 
-/* Reveal on Scroll logic */
+/* Scroll Reveal classes */
 .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 .delay-1 { transition-delay: 0.2s; }
 .delay-2 { transition-delay: 0.4s; }
 .delay-3 { transition-delay: 0.6s; }
 
-/* --- 9. MOBILE RESPONSIVE --- */
+/* --- 7. MOBILE RESPONSIVE HERO --- */
 @media (max-width: 992px) {
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
         gap: 40px;
     }
-    
     .hero-btns { justify-content: center; }
-    
     .blob-shape {
         width: 300px;
         height: 340px;
         box-shadow: 15px 15px 0px #000;
     }
-    
     h1 { font-size: 2.8rem; }
-    
-    .nav-menu.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: var(--bg-color);
-        padding: 40px;
-        border-bottom: var(--border-thickness) solid #000;
-    }
 }
