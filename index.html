@@ -6,9 +6,11 @@
     <title>Princess Angela | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
 </head>
-<body>
+<body class="light-mode">
     <div class="glitter-overlay"></div>
 
     <header>
@@ -97,11 +99,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Trigger Revelations
             const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => el.classList.add('active'));
+            setTimeout(() => {
+                reveals.forEach(el => el.classList.add('active'));
+            }, 100);
 
-            // 2. Theme Toggle
             const themeToggle = document.getElementById('theme-toggle');
             const body = document.body;
             const icon = themeToggle.querySelector('i');
@@ -112,7 +114,6 @@
                 icon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
             });
 
-            // 3. Mobile Menu
             const mobileMenu = document.getElementById('mobile-menu');
             const navMenu = document.querySelector('.nav-menu');
 
