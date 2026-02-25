@@ -106,47 +106,13 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* --- 4. THE FOOTER --- */
-.main-footer { 
-    background-color: var(--footer-bg) !important; 
-    /* Use var(--current-text) so it stays black in light mode and white in dark mode */
-    color: var(--current-text) !important; 
-    border-top: 5px solid var(--current-border); 
-    position: relative; 
-    transition: background 0.3s ease;
-}
+/* --- 4. FOOTER STYLES (Keep as you have them) --- */
 
-/* Force footer links to match your theme */
-.footer-container a {
-    text-decoration: none !important;
-    color: inherit !important; /* Inherits black or white based on theme */
-    font-weight: 800;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
+.main-footer { background-color: var(--footer-bg) !important; color: #000 !important; border-top: 5px solid var(--current-border); position: relative; }
 
-.footer-container a:hover {
-    color: var(--neo-yellow) !important;
-    text-shadow: 2px 2px 0px var(--black);
-}
+.footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 40px; padding: 60px 8%; max-width: 1200px; margin: 0 auto; }
 
-.footer-container { 
-    display: grid; 
-    grid-template-columns: 1.5fr 1fr 1.2fr; 
-    gap: 40px; 
-    padding: 60px 8%; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-}
-
-.footer-bottom { 
-    background: var(--black); 
-    color: var(--white); 
-    padding: 20px; 
-    text-align: center; 
-    font-weight: 700; 
-    border-top: 3px solid var(--current-border); 
-}
+.footer-bottom { background: var(--black); color: var(--white); padding: 20px; text-align: center; font-weight: 700; border-top: 3px solid var(--current-border); }
 /* --- 5. RESPONSIVE --- */
 @media (max-width: 900px) {
     .menu-toggle { 
