@@ -7,7 +7,8 @@
     --white: #ffffff;
     --border-thickness: 3px;
     --neo-shadow: 8px 8px 0px #000;
-    --current-hero-bg: linear-gradient(180deg, #ff99ab 0%, #fcecbe 100%);
+    
+    --current-hero-bg: linear-gradient(180deg, var(--primary-pink) 0%, var(--accent-yellow) 100%);
 }
 
 body.dark-mode {
