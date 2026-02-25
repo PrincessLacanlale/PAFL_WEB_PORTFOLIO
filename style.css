@@ -9,7 +9,6 @@
     --black: #000000;
     --accent-blue: #3b82f6;
 
-    /* Theme-specific variables */
     --current-bg: var(--bg-cream);
     --current-text: var(--text-dark);
     --current-nav-bg: rgba(253, 245, 242, 0.95);
@@ -28,11 +27,7 @@ body.dark-mode {
 }
 
 /* --- 2. GLOBAL STYLES --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -40,7 +35,6 @@ body {
     color: var(--current-text);
     overflow-x: hidden;
     transition: background 0.3s ease, color 0.3s ease;
-    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
 }
 
 /* --- 3. NAVIGATION --- */
@@ -53,7 +47,7 @@ nav {
     backdrop-filter: blur(10px); 
     position: sticky; 
     top: 0; 
-    z-index: 1000;
+    z-index: 2000; /* Increased to stay above everything */
     border-bottom: 3px solid var(--current-border);
 }
 
@@ -74,7 +68,13 @@ nav {
     font-weight: 700; 
     text-transform: uppercase; 
 }
-.nav-menu li a.active { color: var(--pink); }
+.nav-menu li a.active { 
+    background: var(--neo-yellow); 
+    padding: 10px 15px; 
+    border: 2px solid var(--current-border);
+    box-shadow: 3px 3px 0px var(--current-border);
+    color: var(--pink);
+}
 
 .nav-actions { display: flex; align-items: center; gap: 15px; }
 
@@ -95,6 +95,7 @@ nav {
     width: 30px;
     height: 21px;
     cursor: pointer;
+    z-index: 2001; /* Above nav menu */
 }
 
 .menu-toggle .bar {
@@ -105,116 +106,38 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* --- 4. THE FOOTER --- */
-.main-footer { 
-    background-color: var(--footer-bg) !important; 
-    color: #000 !important; 
-    border-top: 5px solid var(--current-border); 
-    padding: 0; 
-    position: relative;
-    transition: background 0.3s ease;
-}
-
-body.dark-mode .main-footer { color: #fff !important; }
-
-.main-footer::before {
-    content: '';
-    display: block;
-    height: 15px;
-    background: var(--neo-yellow);
-    border-bottom: 3px solid var(--current-border);
-}
-
-.footer-container { 
-    display: grid; 
-    grid-template-columns: 1.5fr 1fr 1.2fr; 
-    gap: 40px; 
-    padding: 60px 8%; 
-    max-width: 1200px; 
-    margin: 0 auto;
-}
-
-.footer-col h4 { font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
-
-.zigzag-underline {
-    height: 10px; width: 80px; margin-bottom: 20px;
-    background: linear-gradient(135deg, transparent 25%, var(--current-border) 25%, var(--current-border) 50%, transparent 50%, transparent 75%, var(--current-border) 75%),
-                linear-gradient(225deg, transparent 25%, var(--current-border) 25%, var(--current-border) 50%, transparent 50%, transparent 75%, var(--current-border) 75%);
-    background-size: 10px 10px;
-}
-
-.footer-icons { display: flex; gap: 15px; margin-top: 25px; }
-.footer-icons a {
-    width: 50px; height: 50px; 
-    background: #fff; 
-    border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    border: 3px solid var(--current-border); 
-    box-shadow: 5px 5px 0px var(--current-border); 
-    color: #000; 
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.footer-icons a:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 10px 10px 0px var(--current-border);
-    background: var(--neo-yellow);
-}
-
-.quick-links ul { list-style: none; }
-.quick-links ul li { margin-bottom: 10px; }
-.quick-links ul li a {
-    text-decoration: none; color: inherit; 
-    font-weight: 800; text-transform: uppercase;
-    transition: 0.2s; display: inline-block;
-}
-
-.quick-links ul li a:hover { color: var(--white); transform: translateX(5px); }
-
-.contact-details p { font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-
-.footer-bottom {
-    background: var(--black);
-    color: var(--white);
-    padding: 20px;
-    text-align: center;
-    font-weight: 700;
-    border-top: 3px solid var(--current-border);
-}
+/* --- 4. FOOTER STYLES (Keep as you have them) --- */
+.main-footer { background-color: var(--footer-bg) !important; color: #000 !important; border-top: 5px solid var(--current-border); position: relative; }
+.footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 40px; padding: 60px 8%; max-width: 1200px; margin: 0 auto; }
+.footer-bottom { background: var(--black); color: var(--white); padding: 20px; text-align: center; font-weight: 700; border-top: 3px solid var(--current-border); }
 
 /* --- 5. RESPONSIVE --- */
 @media (max-width: 900px) {
-    /* Show Toggle */
-    .menu-toggle { display: flex; }
+    .menu-toggle { 
+        display: flex !important; /* Force display on mobile */
+    }
 
-    /* Mobile Nav Menu */
     .nav-menu {
-        position: absolute;
-        top: 100%;
+        position: fixed; /* Fixed so it overlays the whole screen */
+        top: 80px; /* Aligns below the nav bar */
         left: -100%;
         flex-direction: column;
         background-color: var(--current-nav-bg);
         width: 100%;
-        gap: 0;
-        transition: 0.3s ease-in-out;
-        border-bottom: 3px solid var(--current-border);
-        padding: 20px 0;
+        height: calc(100vh - 80px);
+        gap: 30px;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-top: 3px solid var(--current-border);
+        padding-top: 50px;
+        z-index: 1000;
     }
 
     .nav-menu.active { left: 0; }
-    .nav-menu li { width: 100%; text-align: center; padding: 15px 0; }
-
-    /* Animation for Hamburger */
+    
+    /* Animation for Hamburger to X */
     .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .footer-col { align-items: center; }
-    .zigzag-underline { margin: 10px auto 25px auto; }
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
 }
