@@ -232,69 +232,117 @@ h1 span {
     50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; } 
 }
 
-/* --- 5. UNIFIED FOOTER (PC & MOBILE) --- */
+/* --- 5. REFINED PROFESSIONAL FOOTER --- */
 .main-footer { 
-    background-color: var(--footer-bg) !important; 
-    color: var(--footer-text) !important; 
-    border-top: 5px solid var(--current-border); 
-    padding: 0 0 60px; 
+    background-color: var(--white) !important; /* Brighter, cleaner look */
+    color: var(--text-color) !important; 
+    border-top: 5px solid #000; 
+    padding: 60px 0 30px; 
     position: relative;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.rope-divider {
-    height: 12px; 
-    background-image: repeating-linear-gradient(45deg, #c49a6c, #c49a6c 10px, #fdf6e3 10px, #fdf6e3 20px);
-    border-bottom: 3px solid var(--current-border); 
-    margin-bottom: 50px;
+/* Cleaner professional divider */
+.main-footer::before {
+    content: '';
+    display: block;
+    height: 10px;
+    background: var(--accent-yellow);
+    border-bottom: 3px solid #000;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 .footer-container { 
     display: grid; 
-    grid-template-columns: 1.5fr 1fr 1.2fr; 
-    gap: 40px; 
+    grid-template-columns: 1.5fr 0.8fr 1.2fr; 
+    gap: 60px; 
     padding: 0 8%; 
     max-width: 1200px; 
     margin: 0 auto;
 }
 
-.footer-col { display: flex; flex-direction: column; align-items: flex-start; }
-.footer-col h4, .footer-col .logo { color: var(--footer-text) !important; }
+.footer-col h4 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 900;
+}
 
+/* Professionalized Zigzag */
 .zigzag-underline {
-    height: 8px; width: 60px; margin: 10px 0 25px 0;
-    background: linear-gradient(135deg, transparent 25%, currentColor 25%, currentColor 50%, transparent 50%, transparent 75%, currentColor 75%),
-                linear-gradient(225deg, transparent 25%, currentColor 25%, currentColor 50%, transparent 50%, transparent 75%, currentColor 75%);
-    background-size: 10px 10px;
+    height: 6px; width: 40px; margin-bottom: 25px;
+    background-color: var(--primary-pink);
+    border: 2px solid #000;
+}
+
+.brand-info p {
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 15px;
+    opacity: 0.8;
 }
 
 .quick-links ul { list-style: none; }
-.quick-links ul li { margin-bottom: 12px; }
+.quick-links ul li { margin-bottom: 10px; }
 .quick-links ul li a {
     text-decoration: none; 
-    color: var(--footer-text); 
-    font-weight: 600;
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
-    transition: 0.3s ease;
-}
-
-.footer-icons { display: flex; gap: 15px; margin-top: 25px; }
-.footer-icons a {
-    width: 45px; 
-    height: 45px; 
-    background: var(--footer-icon-bg); 
-    border-radius: 50%;
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center;
-    border: 3px solid var(--current-border); 
-    box-shadow: 4px 4px 0px var(--current-border); 
-    color: var(--footer-text); 
+    color: var(--text-color); 
+    font-weight: 700;
+    font-size: 0.9rem;
     transition: 0.2s ease;
 }
 
+.quick-links ul li a:hover {
+    color: var(--primary-pink);
+    padding-left: 5px;
+}
+
+.contact-details p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.contact-details i {
+    color: var(--primary-pink);
+}
+
+.footer-icons { display: flex; gap: 12px; margin-top: 25px; }
+.footer-icons a {
+    width: 40px; height: 40px; 
+    background: var(--white); 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    border: 3px solid #000; 
+    box-shadow: 4px 4px 0px #000; 
+    color: #000; 
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-icons a:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--primary-pink);
+    background: var(--accent-yellow);
+}
+
+/* Copyright Bar */
+.footer-bottom {
+    margin-top: 60px;
+    padding: 20px 8%;
+    border-top: 3px solid #000;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
 /* --- 6. MOBILE BREAKPOINTS --- */
 @media (max-width: 900px) {
     .hero-container { flex-direction: column-reverse; text-align: center; gap: 40px; }
