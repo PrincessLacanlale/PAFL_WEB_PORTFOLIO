@@ -1,11 +1,13 @@
-/* --- 1. THEME LOGIC & VARIABLES (Untouched) --- */
+/* --- 1. THEME LOGIC & VARIABLES --- */
 :root {
-    --pink: #ff608c;
-    --neo-yellow: #fdd835;
-    --bg-cream: #fcebd7;
+    /* --- Reference Image Colors --- */
+    --pink: #ff608c;           /* The vibrant pink from your blob */
+    --neo-yellow: #fdd835;     
+    --bg-cream: #fcebd7;       /* The warm cream background */
     --white: #ffffff;
     --black: #000000;
     
+    /* --- Refined System Colors --- */
     --current-bg: var(--bg-cream);
     --current-text: #2d2d2d;
     --current-nav-bg: rgba(252, 235, 215, 0.9);
@@ -23,7 +25,7 @@ body.dark-mode {
     --footer-bg: var(--black);
 }
 
-/* --- 2. GLOBAL RESET --- */
+/* --- 2. GLOBAL STYLES --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -34,7 +36,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* --- 3. NAVIGATION (Untouched Layout) --- */
+/* --- 3. NAVIGATION (Unchanged as requested) --- */
 nav {
     display: flex; 
     justify-content: space-between; 
@@ -44,7 +46,7 @@ nav {
     backdrop-filter: blur(10px); 
     position: sticky; 
     top: 0; 
-    z-index: 3000; 
+    z-index: 2000; 
     border-bottom: 3px solid var(--current-border);
 }
 
@@ -84,7 +86,6 @@ nav {
     box-shadow: 4px 4px 0px var(--current-border); 
 }
 
-/* Hamburger Toggle Visuals */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -92,7 +93,7 @@ nav {
     width: 30px;
     height: 21px;
     cursor: pointer;
-    z-index: 3001;
+    z-index: 2001;
 }
 
 .menu-toggle .bar {
@@ -103,29 +104,39 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* --- 4. THE FOOTER (Matches your Reference) --- */
+/* --- 4. FOOTER (Fixed for Gaps and Style) --- */
 .main-footer {
     background-color: var(--footer-bg);
     color: #2d2d2d;
     position: relative;
-    display: block;
+    display: block; /* Critical for gap fix */
     width: 100%;
-    margin-top: 0 !important;
+    margin-top: 0 !important; /* Forces connection to section above */
     padding-top: 0 !important;
     transition: background 0.3s ease, color 0.3s ease;
+    overflow: hidden;
 }
 
-body.dark-mode .main-footer { color: #ffffff; }
+body.dark-mode .main-footer {
+    color: #fff;
+}
 
+/* 1. ROPE DIVIDER - Flush with top */
 .rope-divider {
     display: block;
     height: 14px;
-    background: repeating-linear-gradient(45deg, #d2a679, #d2a679 10px, #f4d35e 10px, #f4d35e 20px);
+    background: repeating-linear-gradient(
+        45deg,
+        #d2a679,
+        #d2a679 10px,
+        #f4d35e 10px,
+        #f4d35e 20px
+    );
     border-top: 3px solid #000;
     border-bottom: 3px solid #000;
-    width: 100%;
 }
 
+/* 2. LAYOUT */
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -135,13 +146,16 @@ body.dark-mode .main-footer { color: #ffffff; }
     margin: 0 auto;
 }
 
+/* 3. LOGO & SOCIALS */
 .footer-logo {
     font-size: 3.5rem;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     color: #fff2cc; 
     text-shadow: 3px 3px 0px #000;
     margin-bottom: 10px;
 }
+.footer-logo span { color: #fdd835; }
 
 .footer-social-circles {
     display: flex;
@@ -150,40 +164,75 @@ body.dark-mode .main-footer { color: #ffffff; }
 }
 
 .social-circle {
-    width: 55px; height: 55px;
-    background: #fff;
+    width: 55px;
+    height: 55px;
+    background: white;
     border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    color: var(--pink);
-    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--pink); 
+    font-size: 1.5rem;
     text-decoration: none;
-    border: 3px solid #000;
-    transition: 0.3s transform ease;
+    border: 3px solid #000; /* Matching the thick black outline */
+    transition: 0.3s transform;
 }
 .social-circle:hover { transform: translateY(-5px); }
 
+/* 4. HEADERS & ZIGZAG */
+.footer-col h4 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
 .zigzag-underline {
-    width: 50px; height: 8px;
+    width: 50px;
+    height: 8px;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="10"><path d="M0 5 L5 0 L10 5 L15 0 L20 5" stroke="black" fill="transparent" stroke-width="2"/></svg>');
     margin-bottom: 20px;
 }
 
+/* 5. LINKS & CONTACTS */
 .footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li { margin-bottom: 10px; }
 .footer-col ul li a {
-    text-decoration: none; color: inherit; font-weight: 700;
-    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.footer-col p {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* 6. WAVY BACKGROUND ELEMENT */
+.footer-wave {
+    height: 100px;
+    width: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,0.2)" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: cover;
+    background-position: bottom;
 }
 
 .footer-bottom {
-    background: #000; color: #fff;
-    text-align: center; padding: 25px;
-    font-weight: 700; font-size: 0.85rem;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    font-weight: 700;
+    font-size: 0.85rem;
 }
 
-/* --- 5. RESPONSIVE LOGIC (Hamburger & Grid) --- */
+/* --- 5. RESPONSIVE DESIGN & HAMBURGER --- */
 @media (max-width: 900px) {
-    .menu-toggle { display: flex; }
+    .menu-toggle { display: flex !important; }
     .nav-menu {
         position: fixed;
         top: 80px;
@@ -192,19 +241,27 @@ body.dark-mode .main-footer { color: #ffffff; }
         background-color: var(--current-nav-bg);
         width: 100%;
         height: calc(100vh - 80px);
-        transition: 0.4s ease;
-        z-index: 2001;
+        gap: 30px;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-top: 3px solid var(--current-border);
         padding-top: 50px;
+        z-index: 1000;
     }
     .nav-menu.active { left: 0; }
     
+    /* Hamburger Animations */
     .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 }
 
 @media (max-width: 768px) {
-    .footer-container { grid-template-columns: 1fr; text-align: center; }
-    .footer-social-circles, .footer-col ul li a { justify-content: center; }
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-social-circles, .footer-col p, .footer-col ul li a {
+        justify-content: center;
+    }
     .zigzag-underline { margin: 0 auto 20px auto; }
 }
