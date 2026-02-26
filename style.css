@@ -1,4 +1,4 @@
-/* --- 1. THEME LOGIC & VARIABLES --- */
+/* --- 1. THEME LOGIC & VARIABLES (Untouched) --- */
 :root {
     --pink: #ff608c;
     --neo-yellow: #fdd835;
@@ -23,12 +23,8 @@ body.dark-mode {
     --footer-bg: var(--black);
 }
 
-/* --- 2. GLOBAL RESET (Critical for gaps) --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+/* --- 2. GLOBAL RESET --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -38,7 +34,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* --- 3. NAVIGATION --- */
+/* --- 3. NAVIGATION (Untouched Layout) --- */
 nav {
     display: flex; 
     justify-content: space-between; 
@@ -48,7 +44,7 @@ nav {
     backdrop-filter: blur(10px); 
     position: sticky; 
     top: 0; 
-    z-index: 3000;
+    z-index: 3000; 
     border-bottom: 3px solid var(--current-border);
 }
 
@@ -69,7 +65,6 @@ nav {
     font-weight: 700; 
     text-transform: uppercase; 
 }
-
 .nav-menu li a.active { 
     background: var(--neo-yellow); 
     padding: 10px 15px; 
@@ -78,40 +73,59 @@ nav {
     color: var(--pink);
 }
 
-/* --- 4. THE FOOTER (GAP FIX INCLUDED) --- */
+.nav-actions { display: flex; align-items: center; gap: 15px; }
+
+.theme-toggle {
+    cursor: pointer; 
+    background: var(--current-card); 
+    border: 2px solid var(--current-border);
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 4px 4px 0px var(--current-border); 
+}
+
+/* Hamburger Toggle Visuals */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 3001;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--current-text);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* --- 4. THE FOOTER (Matches your Reference) --- */
 .main-footer {
     background-color: var(--footer-bg);
-    color: #2d2d2d; 
+    color: #2d2d2d;
     position: relative;
-    display: block; /* Forces it to act as a block element */
+    display: block;
     width: 100%;
-    margin-top: 0 !important; /* Removes gap from top */
-    padding-top: 0 !important; /* Removes gap inside top */
-    transition: background 0.3s ease;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Light/Dark mode adjustments for footer text */
-body.dark-mode .main-footer {
-    color: #ffffff;
-}
+body.dark-mode .main-footer { color: #ffffff; }
 
-/* THE ROPE DIVIDER */
 .rope-divider {
-    display: block; /* Ensures no inline spacing */
+    display: block;
     height: 14px;
-    background: repeating-linear-gradient(
-        45deg, 
-        #d2a679, 
-        #d2a679 10px, 
-        #f4d35e 10px, 
-        #f4d35e 20px
-    );
+    background: repeating-linear-gradient(45deg, #d2a679, #d2a679 10px, #f4d35e 10px, #f4d35e 20px);
     border-top: 3px solid #000;
     border-bottom: 3px solid #000;
     width: 100%;
 }
 
-/* GRID LAYOUT */
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -135,82 +149,41 @@ body.dark-mode .main-footer {
     margin-top: 20px;
 }
 
-/* THE CIRCULAR ICONS */
 .social-circle {
-    width: 55px;
-    height: 55px;
+    width: 55px; height: 55px;
     background: #fff;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ff608c; 
+    display: flex; justify-content: center; align-items: center;
+    color: var(--pink);
     font-size: 1.6rem;
     text-decoration: none;
     border: 3px solid #000;
     transition: 0.3s transform ease;
 }
+.social-circle:hover { transform: translateY(-5px); }
 
-.social-circle:hover { 
-    transform: translateY(-5px); 
-}
-
-/* ZIGZAG UNDERLINE */
 .zigzag-underline {
-    width: 50px;
-    height: 8px;
+    width: 50px; height: 8px;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="10"><path d="M0 5 L5 0 L10 5 L15 0 L20 5" stroke="black" fill="transparent" stroke-width="2"/></svg>');
     margin-bottom: 20px;
-}
-
-.footer-col h4 {
-    font-size: 1.3rem;
-    font-weight: 900;
-    text-transform: uppercase;
 }
 
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 12px; }
 .footer-col ul li a {
-    text-decoration: none;
-    color: inherit;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-/* THE WAVE TRANSITION */
-.footer-wave {
-    height: 80px;
-    width: 100%;
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,0.2)" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-    background-size: cover;
-    background-position: bottom;
+    text-decoration: none; color: inherit; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
 }
 
 .footer-bottom {
-    background: #000;
-    color: #fff;
-    text-align: center;
-    padding: 25px;
-    font-weight: 700;
-    font-size: 0.85rem;
+    background: #000; color: #fff;
+    text-align: center; padding: 25px;
+    font-weight: 700; font-size: 0.85rem;
 }
 
-/* --- 5. RESPONSIVE DESIGN --- */
-
-/* Mobile Nav Toggle */
+/* --- 5. RESPONSIVE LOGIC (Hamburger & Grid) --- */
 @media (max-width: 900px) {
-    .menu-toggle { display: flex !important; }
+    .menu-toggle { display: flex; }
     .nav-menu {
         position: fixed;
         top: 80px;
@@ -221,20 +194,17 @@ body.dark-mode .main-footer {
         height: calc(100vh - 80px);
         transition: 0.4s ease;
         z-index: 2001;
+        padding-top: 50px;
     }
     .nav-menu.active { left: 0; }
+    
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 }
 
-/* Tablet/Mobile Footer Layout */
 @media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .footer-social-circles, 
-    .footer-col ul li a, 
-    .contact-item {
-        justify-content: center;
-    }
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .footer-social-circles, .footer-col ul li a { justify-content: center; }
     .zigzag-underline { margin: 0 auto 20px auto; }
 }
