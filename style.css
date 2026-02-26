@@ -135,8 +135,11 @@ nav {
     background-color: var(--footer-bg);
     color: #333; /* Darker text for readability on pink */
     position: relative;
+    width: 100%;
+
+    padding-top: 0 !important; 
+    margin-top: 0;
     transition: background 0.3s ease, color 0.3s ease;
-    overflow: hidden;
 }
 
 /* Light mode specific text color */
@@ -151,7 +154,7 @@ body.dark-mode .main-footer {
 
 /* 1. ROPE DIVIDER (The Braid effect) */
 .rope-divider {
-    height: 12px;
+    height: 16px;
     background: repeating-linear-gradient(
         45deg,
         #d2a679,
@@ -159,8 +162,10 @@ body.dark-mode .main-footer {
         #f4d35e 10px,
         #f4d35e 20px
     );
-    border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 /* 2. LAYOUT */
@@ -168,7 +173,7 @@ body.dark-mode .main-footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
-    padding: 60px 8%;
+    padding: 20px 8% 60px 8%;
     max-width: 1400px;
     margin: 0 auto;
 }
