@@ -94,8 +94,42 @@ body.dark-mode {
     transition: transform 0.3s ease;
 }
 
+/* --- DOWNLOAD RESUME BUTTON --- */
+.btn-pink {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--black); /* Keep text dark for contrast */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    padding: 18px 35px;
+    border: 3px solid var(--current-border);
+    box-shadow: 6px 6px 0px var(--current-border); /* The bold shadow */
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-pink:hover {
+    background: var(--yellow); /* Shifts to yellow on hover */
+    transform: translate(-2px, -2px); /* Moves slightly up */
+    box-shadow: 8px 8px 0px var(--current-border); /* Bigger shadow on hover */
+}
+
+.btn-pink:active {
+    transform: translate(4px, 4px); /* Pushes down when clicked */
+    box-shadow: 0px 0px 0px var(--current-border); /* Shadow disappears for "pressed" effect */
+}
+
+/* Dark mode adjustment for the button if needed */
+body.dark-mode .btn-pink {
+    color: #000; /* Ensuring the text stays readable on pink/yellow */
+}
+
 /* --- 4. SKILLS SECTION --- */
-.what-i-do { 
+.what-i-can-do { 
     padding: 100px 10%; 
     background-color: var(--current-bg);
     text-align: center; 
