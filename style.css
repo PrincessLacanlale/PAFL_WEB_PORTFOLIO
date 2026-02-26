@@ -36,7 +36,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* --- 3. NAVIGATION (Unchanged as requested) --- */
+/* --- 3. NAVIGATION --- */
 nav {
     display: flex; 
     justify-content: space-between; 
@@ -60,6 +60,7 @@ nav {
 .logo span { color: var(--pink); }
 
 .nav-menu { display: flex; list-style: none; align-items: center; gap: 40px; }
+
 .nav-menu li a { 
     text-decoration: none; 
     color: var(--current-text); 
@@ -67,6 +68,7 @@ nav {
     font-weight: 700; 
     text-transform: uppercase; 
 }
+
 .nav-menu li a.active { 
     background: var(--neo-yellow); 
     padding: 10px 15px; 
@@ -104,24 +106,22 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* --- 4. FOOTER (Fixed for Gaps and Style) --- */
+/* --- 4. FOOTER STYLES (Fixed Gap) --- */
 .main-footer {
     background-color: var(--footer-bg);
-    color: #2d2d2d;
+    color: #333;
     position: relative;
-    display: block; /* Critical for gap fix */
+    display: block; /* Fixes potential inline spacing gaps */
     width: 100%;
-    margin-top: 0 !important; /* Forces connection to section above */
+    margin-top: 0 !important; /* Forces it to touch the section above */
     padding-top: 0 !important;
     transition: background 0.3s ease, color 0.3s ease;
-    overflow: hidden;
 }
 
 body.dark-mode .main-footer {
     color: #fff;
 }
 
-/* 1. ROPE DIVIDER - Flush with top */
 .rope-divider {
     display: block;
     height: 14px;
@@ -136,17 +136,15 @@ body.dark-mode .main-footer {
     border-bottom: 3px solid #000;
 }
 
-/* 2. LAYOUT */
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
-    padding: 50px 8% 60px 8%;
+    padding: 60px 8%;
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* 3. LOGO & SOCIALS */
 .footer-logo {
     font-size: 3.5rem;
     font-family: 'Montserrat', sans-serif;
@@ -171,20 +169,13 @@ body.dark-mode .main-footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--pink); 
+    color: var(--pink);
     font-size: 1.5rem;
     text-decoration: none;
-    border: 3px solid #000; /* Matching the thick black outline */
+    border: 3px solid #000;
     transition: 0.3s transform;
 }
 .social-circle:hover { transform: translateY(-5px); }
-
-/* 4. HEADERS & ZIGZAG */
-.footer-col h4 {
-    font-size: 1.3rem;
-    font-weight: 900;
-    margin-bottom: 5px;
-}
 
 .zigzag-underline {
     width: 50px;
@@ -193,7 +184,12 @@ body.dark-mode .main-footer {
     margin-bottom: 20px;
 }
 
-/* 5. LINKS & CONTACTS */
+.footer-col h4 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 10px; }
 .footer-col ul li a {
@@ -203,22 +199,6 @@ body.dark-mode .main-footer {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-.footer-col p {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-/* 6. WAVY BACKGROUND ELEMENT */
-.footer-wave {
-    height: 100px;
-    width: 100%;
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,0.2)" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-    background-size: cover;
-    background-position: bottom;
 }
 
 .footer-bottom {
@@ -230,7 +210,7 @@ body.dark-mode .main-footer {
     font-size: 0.85rem;
 }
 
-/* --- 5. RESPONSIVE DESIGN & HAMBURGER --- */
+/* --- 5. RESPONSIVE DESIGN --- */
 @media (max-width: 900px) {
     .menu-toggle { display: flex !important; }
     .nav-menu {
@@ -249,7 +229,7 @@ body.dark-mode .main-footer {
     }
     .nav-menu.active { left: 0; }
     
-    /* Hamburger Animations */
+    /* Hamburger Animation States */
     .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
@@ -260,7 +240,7 @@ body.dark-mode .main-footer {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    .footer-social-circles, .footer-col p, .footer-col ul li a {
+    .footer-social-circles, .footer-col ul li a {
         justify-content: center;
     }
     .zigzag-underline { margin: 0 auto 20px auto; }
