@@ -37,6 +37,8 @@ body.dark-mode {
 .about-text { 
     flex: 1; 
     padding-right: 60px; 
+    display: flex;
+    flex-direction: column;
 }
 
 .about-text h1 { 
@@ -63,6 +65,26 @@ body.dark-mode {
     box-shadow: 8px 8px 0px var(--current-border);
     margin-bottom: 30px;
     font-family: 'Poppins', sans-serif;
+}
+
+/* Centering the Resume Button */
+.btn-pink {
+    background: var(--pink);
+    color: var(--black);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 3px solid var(--black);
+    box-shadow: 5px 5px 0px var(--black);
+    width: fit-content;
+    transition: 0.2s;
+}
+
+.btn-pink:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--black);
+    background: var(--yellow);
 }
 
 /* --- 3. PROFILE IMAGE (THE BLOB) --- */
@@ -94,13 +116,17 @@ body.dark-mode {
     transition: transform 0.3s ease;
 }
 
-
-/* --- 4. SKILLS SECTION --- */
-
-.what-i-can-do { 
+/* --- 4. WHAT I CAN DO SECTION --- */
+.what-i-do { 
     padding: 100px 10%; 
     background-color: var(--current-bg);
     text-align: center; 
+}
+
+.outline-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .outline-box h2 {
@@ -110,12 +136,16 @@ body.dark-mode {
     border: 4px solid var(--current-border);
     padding: 15px 50px;
     font-size: clamp(1.5rem, 5vw, 2.5rem);
-    margin-bottom: 40px;
     box-shadow: 6px 6px 0px var(--current-border);
     text-transform: uppercase;
-
 }
 
+.summary {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--current-text);
+}
 
 .skills-flex { 
     display: flex; 
@@ -173,12 +203,19 @@ body.dark-mode {
 .soft-list li::before { content: "✦"; color: var(--pink); font-weight: bold; }
 
 /* --- 6. CERTIFICATIONS --- */
-.certifications { margin-top: 100px; }
+.certifications { 
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     margin-top: 40px;
+    width: 100%;
 }
 
 .cert-card {
@@ -191,6 +228,7 @@ body.dark-mode {
     gap: 15px;
     box-shadow: 8px 8px 0px var(--current-border);
     transition: 0.2s;
+    text-align: left;
 }
 
 .cert-card:hover {
@@ -200,7 +238,16 @@ body.dark-mode {
 
 .cert-icon { font-size: 2rem; color: var(--pink); }
 
-/* --- 7. INTERESTS (STICKER TAGS) --- */
+.cert-link {
+    text-decoration: none;
+    color: var(--pink);
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 10px;
+}
+
+/* --- 7. INTERESTS --- */
 .interests-footer { 
     margin-top: 60px; 
     text-align: center;
@@ -209,7 +256,6 @@ body.dark-mode {
 
 .interest-tags { 
     display: flex; 
-    flex-direction: row; 
     flex-wrap: wrap; 
     justify-content: center; 
     align-items: center;
@@ -228,36 +274,20 @@ body.dark-mode {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.interest-tags span:hover {
-    transform: translateY(-2px);
-    box-shadow: 6px 6px 0px var(--pink);
-    background: #ffffff;
-    color: #000000;
-    border-color: #000000;
+    transition: 0.2s;
 }
 
 /* --- 8. RESPONSIVE MEDIA QUERIES --- */
 
-/* Laptops & Tablets (Landscape) */
 @media (max-width: 1024px) {
-    .about-hero { 
-        padding: 100px 5% 60px; 
-    }
-    .about-text { 
-        padding-right: 30px; 
-    }
-    .tech-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-    }
+    .about-hero { padding: 100px 5% 60px; }
+    .about-text { padding-right: 30px; }
+    .tech-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Tablets (Portrait) */
 @media (max-width: 768px) {
     .about-hero {
-        flex-direction: column-reverse; /* Picture stays on top for flow */
+        flex-direction: column-reverse;
         text-align: center;
         padding: 120px 20px 60px;
         min-height: auto;
@@ -267,93 +297,28 @@ body.dark-mode {
         padding-right: 0; 
         margin-top: 40px; 
         width: 100%;
+        align-items: center; /* Centers the button on mobile */
     }
 
-    .about-text h1 {
-        font-size: 3rem;
-    }
+    .about-text h1 { font-size: 3rem; }
 
-    .description-box {
-        margin: 0 auto 30px;
-        max-width: 90%;
-    }
+    .description-box { margin: 0 auto 30px; max-width: 90%; }
 
-    /* Stack Skills Columns */
-    .skills-flex {
-        flex-direction: column;
-        gap: 40px;
-        margin: 40px auto;
-    }
+    .skills-flex { flex-direction: column; gap: 40px; }
 
-    .vertical-divider { 
-        display: none; 
-    }
+    .vertical-divider { display: none; }
 
-    /* Skills Grid - 3 columns for tablets */
-    .tech-grid { 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 10px;
-    }
-
-    /* Interest Tags - Let them wrap naturally instead of forcing vertical */
-    .interest-tags {
-        flex-direction: row;
-        justify-content: center;
-    }
+    .tech-grid { grid-template-columns: repeat(3, 1fr); }
     
-    .interest-tags span {
-        width: auto; /* Allow tags to fit their text */
-        font-size: 0.75rem;
-    }
+    .cert-card { justify-content: center; text-align: center; flex-direction: column; }
 }
 
-/* Mobile Phones (Large & Small) */
 @media (max-width: 480px) {
-    .about-hero {
-        padding-top: 100px;
-    }
-
-    .about-text h1 { 
-        font-size: 2.2rem; 
-    }
-
-    /* Tech Grid - 2 columns for small phones */
-    .tech-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-    }
-
-    .skill-item {
-        padding: 10px 5px;
-    }
-
-    .skill-item img {
-        width: 35px;
-        height: 35px;
-    }
-
-    /* Certifications stack better */
-    .cert-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 25px 15px;
-    }
-
-    .cert-icon {
-        margin-bottom: 10px;
-    }
-
-    /* Shrink the blob slightly so it doesn't overflow */
-    .blob-shape {
-        width: 220px;
-        height: 250px;
-    }
-
-    /* Adjust the Outline Boxes */
-    .outline-box h2 {
-        padding: 10px 20px;
-        font-size: 1.5rem;
-    }
+    .about-text h1 { font-size: 2.2rem; }
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .blob-shape { width: 220px; height: 250px; }
 }
+
 /* --- 9. ANIMATIONS --- */
 @keyframes morphing {
     0%, 100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%; }
