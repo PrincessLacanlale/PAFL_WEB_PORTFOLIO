@@ -290,4 +290,4 @@ body.dark-mode .main-footer {
     .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
     .footer-container { grid-template-columns: 1fr; text-align: center; }
-} check this out pls fix it this one pls use this just only fix the footer
+} 
