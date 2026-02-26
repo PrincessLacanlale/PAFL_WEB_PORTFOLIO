@@ -271,59 +271,119 @@ body.dark-mode .btn-pink {
 
 /* --- 8. RESPONSIVE MEDIA QUERIES --- */
 
-/* Laptops/Tablets (Landscape) */
+/* Laptops & Tablets (Landscape) */
 @media (max-width: 1024px) {
-    .about-hero { padding: 120px 5% 60px; }
-    .about-text { padding-right: 30px; }
-    .tech-grid { grid-template-columns: repeat(3, 1fr); }
+    .about-hero { 
+        padding: 100px 5% 60px; 
+    }
+    .about-text { 
+        padding-right: 30px; 
+    }
+    .tech-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+    }
 }
 
 /* Tablets (Portrait) */
 @media (max-width: 768px) {
     .about-hero {
-        flex-direction: column-reverse; /* Picture on top of text */
+        flex-direction: column-reverse; /* Picture stays on top for flow */
         text-align: center;
-        padding-top: 100px;
+        padding: 120px 20px 60px;
+        min-height: auto;
     }
-    .about-text { padding-right: 0; margin-top: 40px; }
-    
+
+    .about-text { 
+        padding-right: 0; 
+        margin-top: 40px; 
+        width: 100%;
+    }
+
+    .about-text h1 {
+        font-size: 3rem;
+    }
+
+    .description-box {
+        margin: 0 auto 30px;
+        max-width: 90%;
+    }
+
+    /* Stack Skills Columns */
     .skills-flex {
         flex-direction: column;
-        gap: 50px;
+        gap: 40px;
+        margin: 40px auto;
     }
-    
-    .vertical-divider { display: none; }
-    
-    .tech-grid { grid-template-columns: repeat(3, 1fr); }
 
+    .vertical-divider { 
+        display: none; 
+    }
+
+    /* Skills Grid - 3 columns for tablets */
+    .tech-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 10px;
+    }
+
+    /* Interest Tags - Let them wrap naturally instead of forcing vertical */
     .interest-tags {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: row;
+        justify-content: center;
     }
     
     .interest-tags span {
-        width: 80%;
-        justify-content: center;
+        width: auto; /* Allow tags to fit their text */
+        font-size: 0.75rem;
     }
 }
 
-/* Small Phones */
+/* Mobile Phones (Large & Small) */
 @media (max-width: 480px) {
-    .tech-grid { grid-template-columns: repeat(2, 1fr); }
-    
-    .about-text h1 { font-size: 2.2rem; }
-    
+    .about-hero {
+        padding-top: 100px;
+    }
+
+    .about-text h1 { 
+        font-size: 2.2rem; 
+    }
+
+    /* Tech Grid - 2 columns for small phones */
+    .tech-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .skill-item {
+        padding: 10px 5px;
+    }
+
+    .skill-item img {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Certifications stack better */
     .cert-card {
         flex-direction: column;
         text-align: center;
+        padding: 25px 15px;
     }
-    
+
+    .cert-icon {
+        margin-bottom: 10px;
+    }
+
+    /* Shrink the blob slightly so it doesn't overflow */
     .blob-shape {
-        width: 250px;
-        height: 280px;
+        width: 220px;
+        height: 250px;
+    }
+
+    /* Adjust the Outline Boxes */
+    .outline-box h2 {
+        padding: 10px 20px;
+        font-size: 1.5rem;
     }
 }
-
 /* --- 9. ANIMATIONS --- */
 @keyframes morphing {
     0%, 100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%; }
